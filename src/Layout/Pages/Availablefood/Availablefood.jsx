@@ -1,6 +1,9 @@
+import { useLoaderData } from "react-router-dom";
+import Foodcard from "./Foodcard";
 
 
 const Availablefood = () => {
+    const availablefoods = useLoaderData()
     const handlesearch = e => {
         e.preventDefault();
         const formreg = new FormData(e.currentTarget);
@@ -28,15 +31,23 @@ const Availablefood = () => {
 
                 <div className="inline-flex items-center divide-x rounded dark:bg-violet-400 dark:text-gray-800 divide-gray-700 w-1/6">
 
-                        <select name='PreviousReceiver' onChange={DoSubmit} className="w-full py-4">
+                    <select name='PreviousReceiver' onChange={DoSubmit} className="w-full py-4">
                         <option value='Sort by Expire date'>Sort by Expire date</option>
                         <option value='Sort by Quantity'>Sort by Quantity</option>
-                       
+
                     </select>
-                    
+
 
                 </div>
 
+            </div>
+
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-center max-w-6xl mx-auto my-16">
+                {
+                    availablefoods.map(foodcard => <Foodcard key={foodcard._id}
+                    foodcard={foodcard}></Foodcard>)
+                }
             </div>
         </div>
     );

@@ -24,7 +24,7 @@ const useAxiossecure = () => {
             }
             console.log(error)
         })
-    }, [])
+    }, [logout, navigate])
     return axiosSecure;
 };
 

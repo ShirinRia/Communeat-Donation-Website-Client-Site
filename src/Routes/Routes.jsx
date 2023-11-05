@@ -9,6 +9,7 @@ import Login from "../Layout/Pages/Login/Login";
 import Signup from "../Layout/Pages/Signup/Signup";
 import PrivateRoute from "./PrivateRoute";
 import Availablefood from "../Layout/Pages/Availablefood/Availablefood";
+import Singlefood from "../Layout/Pages/Availablefood/Singlefood";
 const Routes = createBrowserRouter([
     {
         path: "/",
@@ -26,6 +27,7 @@ const Routes = createBrowserRouter([
             {
                 path: "/avfood",
                 element: <Availablefood/>,
+                loader: () => fetch(`http://localhost:5000/foods`)
             },
             {
                 path: "/login",
@@ -35,6 +37,11 @@ const Routes = createBrowserRouter([
                 path: "/signup",
                 element: <Signup/>,
             },
+            {
+                path: "/singlefood/:id",
+                element: <PrivateRoute><Singlefood></Singlefood></PrivateRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5000/carts/${params.id}`)
+              },
         ],
     },
 ]);
