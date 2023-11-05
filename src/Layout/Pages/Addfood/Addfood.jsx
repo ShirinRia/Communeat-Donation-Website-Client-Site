@@ -1,9 +1,10 @@
 
-import axios from 'axios';
+import useAxiossecure from "../../../Hooks/useAxiossecure";
+// import axios from 'axios';
 
 const Addfood = () => {
     
-
+    const axiosSecure=useAxiossecure()
     
    
     const handleaddproduct = e => {
@@ -45,11 +46,17 @@ const Addfood = () => {
         const url = `/newfood`;
        
            
-            axios.post(url,newfood)
-                .then(res => {
-                    console.log(res)
-                })
-            
+            // axios.post(url,newfood)
+            //     .then(res => {
+            //         console.log(res)
+            //     })
+            axiosSecure.post(url, newfood)
+                  .then(function (response) {
+                    console.log(response);
+                  })
+                  .catch(function (error) {
+                    console.log(error);
+                  });
     
     }
     return (
