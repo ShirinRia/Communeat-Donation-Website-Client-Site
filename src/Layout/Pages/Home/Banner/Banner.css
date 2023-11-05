@@ -1,0 +1,20 @@
+.back {
+    background: #817979;
+}
+
+.darker {
+    position: fixed;
+    top: -40%;
+    left: -47%;
+    width: 160%;
+    height: 80%;
+    background: #dd4f39;
+    -webkit-transform: rotate(120deg);
+            transform: rotate(145deg);
+            
+    /* width: 100vw;
+    height: 69vh;
+    background-color: #dd4f39;
+    clip-path: polygon(100% 0%, 0% 0%, 0% 100%); */
+   
+}
