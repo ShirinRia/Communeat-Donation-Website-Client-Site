@@ -1,7 +1,6 @@
 
 
-const Managerequest = () => {
-    
+const Errorpage = () => {
     return (
         <div>
             
@@ -9,4 +8,4 @@ const Managerequest = () => {
     );
 };
 
-export default Managerequest;
+export default Errorpage;

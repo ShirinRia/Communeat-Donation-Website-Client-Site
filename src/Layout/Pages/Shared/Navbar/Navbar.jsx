@@ -14,7 +14,7 @@ const Navbar = () => {
         <li className="font-medium"><NavLink to={'/avfood'}>Available Foods</NavLink> </li>
         <li className="font-medium"><NavLink to={'/addfood'}>Add Food</NavLink></li>
         <li className="font-medium"><NavLink to={'/managefood'}>Manage My Foods</NavLink></li>
-        <li className="font-medium"><NavLink to={'foodrequest'}>My Food Request</NavLink></li>
+        <li className="font-medium"><NavLink to={'/foodrequest'}>My Food Request</NavLink></li>
     </>
     return (
         <div className="mb-8">

@@ -31,7 +31,8 @@ const Singlefood = () => {
         const expiredate = food.expiredate
         const image = form.image.value;
         const note = form.note.value;
-        const requestedFood = {foodid, foodname, quantity, address, expiredate, note, image, donar_name, donar_email, Requester_email,Requester_name,Requester_image,donation_money,requestdate, requesttime}
+        const status=food.status
+        const requestedFood = {foodid, foodname, quantity, address, expiredate, note, image, donar_name, donar_email, Requester_email,Requester_name,Requester_image,donation_money,requestdate, requesttime, status}
         console.log(requestedFood);
 
         const url = `/requestedfood`;

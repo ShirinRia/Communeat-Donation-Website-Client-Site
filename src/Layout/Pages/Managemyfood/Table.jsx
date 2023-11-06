@@ -56,7 +56,7 @@ const Table = () => {
           const del_url = `/table/${id_}`
           axiosSecure.delete(del_url)
             .then(res => {
-              setmyfood(res.data)
+              console.log(res.data)
             })
 
         }
@@ -92,6 +92,25 @@ const Table = () => {
 
       accessorKey: 'note'
     },
+    {
+      header:"Action",
+      cell:({row})=>{
+        const x=row.original
+        const id=x._id
+        setxyz(id)
+        return (
+          <div className='py-8 px-4 space-y-8'>
+                <GrDocumentUpdate className='text-2xl' />
+
+                <div >
+                  <button onClick={() => itemDelete(id)}><RiDeleteBin6Fill className='text-2xl' /></button>
+                </div>
+
+                <SiNginxproxymanager className='text-2xl' />
+              </div>
+        )
+      }
+    },
 
     // {
     //   header: 'Image',
@@ -116,7 +135,7 @@ const Table = () => {
                 </th>
               ))
             }
-            <p className='py-8 px-4 font-bold text-gray-900'>Action</p>
+            {/* <p className='py-8 px-4 font-bold text-gray-900'>Action</p> */}
           </tr>
         ))}
         <tbody>
@@ -125,11 +144,12 @@ const Table = () => {
               {row.getVisibleCells().map(cell => (
                 <td className='py-8 px-4 text-center' key={cell._id} >
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                 
                 </td>
                
               ))}
 
-              <div className='py-8 px-4 space-y-8'>
+              {/* <div className='py-8 px-4 space-y-8'>
                 <GrDocumentUpdate className='text-2xl' />
 
                 <div >
@@ -137,7 +157,7 @@ const Table = () => {
                 </div>
 
                 <SiNginxproxymanager className='text-2xl' />
-              </div>
+              </div> */}
             </tr>
           ))}
         </tbody>
