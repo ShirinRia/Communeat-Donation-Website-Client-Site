@@ -5,19 +5,21 @@ import useFood from "../../../Hooks/useFood";
 
 const Availablefood = () => {
     // const allfoods = useLoaderData()
-    const allfoods=useFood()
-    console.log('allfoods',allfoods)
+    const allfoods = useFood()
+    console.log('allfoods', allfoods)
     const [availablefoods, setavailablefoods] = useState([])
     useEffect(() => {
         setavailablefoods(allfoods)
     }, [allfoods])
-    console.log('availablefood',availablefoods)
-   
+    console.log('availablefood', availablefoods)
+
     const handlesearch = e => {
         e.preventDefault();
         const formreg = new FormData(e.currentTarget);
         const searchtext = formreg.get('search')
         console.log(searchtext)
+        const filtered = allfoods.filter(food => food.foodname.toLowerCase() === searchtext.toLowerCase())
+        setavailablefoods(filtered)
     }
     const DoSubmit = (e) => {
         console.log(e.target.value)
@@ -27,6 +29,12 @@ const Availablefood = () => {
                 a.expiredate < b.expiredate ? 1 : -1,
             );
             setavailablefoods(sortallfoods)
+        }
+        else if (sortby === "Sort by Quantity") {
+            const sortallfoodsbyquantity = [...allfoods].sort((a, b) =>
+                a.quantity < b.quantity ? 1 : -1,
+            );
+            setavailablefoods(sortallfoodsbyquantity)
         }
     }
     return (

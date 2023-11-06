@@ -1,10 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
 import useAuth from "../../../Hooks/useAuth";
 import useAxiossecure from "../../../Hooks/useAxiossecure";
 
 const Login = () => {
-	const { signin } = useAuth()
+	const navigate = useNavigate()
+    const location = useLocation()
+	const { signin, signgoogle } = useAuth()
+	const url = `/users`;
 	const axiosSecure = useAxiossecure()
 	const handlelogin = e => {
 		e.preventDefault();
@@ -23,44 +26,28 @@ const Login = () => {
 					email,
 					lastloggedat: currentuser?.metadata?.lastSignInTime
 				}
-				const url = `/users`;
+				
 				axiosSecure.patch(url, olduser)
 					.then(response => {
 						console.log(response);
+						if (response.data.modifiedCount > 0) {
+							Swal.fire({
+								title: 'Sign In!',
+								text: 'Sign In Successfully',
+								icon: 'success',
+								confirmButtonText: 'Explore'
+							})
+						}
 					})
-					.catch(function (error) {
-						console.log(error);
-					});
-				// fetch('http://localhost:5000/users',
-				//     {
-				//         method: 'PATCH',
-				//         headers: {
-				//             'content-type': 'application/json',
-				//         },
-				//         body: JSON.stringify(olduser)
-				//     })
-				//     .then(res => res.json())
-				//     .then(data => {
-				//         // console.log(data)
-				//         if (data.modifiedCount > 0) {
-				//             Swal.fire({
-				//                 title: 'Sign In!',
-				//                 text: 'Sign In Successfully',
-				//                 icon: 'success',
-				//                 confirmButtonText: 'Explore'
-				//             })
-				//         }
-				//     })
 
-				// navigate(location?.state ? location.state : '/')
-
+				navigate(location?.state ? location.state : '/')
 			})
 			.catch((error) => {
-				// const errorCode = error.code;
+				
 				const errorMessage = error.message;
 
 				if (errorMessage === "Firebase: Error (auth/invalid-login-credentials).")
-					// setlogerror("Invalid Credential");
+					
 					Swal.fire({
 						title: "Invalid Credential",
 						showClass: {
@@ -72,6 +59,81 @@ const Login = () => {
 					})
 			});
 	}
+
+	// google
+	const handlegoogle = () => {
+		signgoogle()
+			.then((result) => {
+
+				// The signed-in user info.
+				const user = result.user;
+				console.log(user)
+				const email = user.email
+				const olduser = {
+					email,
+					lastloggedat: user?.metadata?.lastSignInTime
+				}
+
+			// 	fetch('https://cosmetics-beauty-backend-mimjpskj0-shirin-sultanas-projects.vercel.app/users',
+			// 		{
+			// 			method: 'PATCH',
+			// 			headers: {
+			// 				'content-type': 'application/json',
+			// 			},
+			// 			body: JSON.stringify(olduser)
+			// 		})
+			// 		.then(res => res.json())
+			// 		.then(data => {
+			// 			// console.log(data)
+			// 			if (data.modifiedCount > 0) {
+			// 				Swal.fire({
+			// 					title: 'Success!',
+			// 					text: 'Sign In with google Successfully',
+			// 					icon: 'success',
+			// 					confirmButtonText: 'OK'
+			// 				})
+			// 			}
+			// 		})
+			// 	navigate(location?.state ? location.state : '/')
+			// }).catch((error) => {
+
+			// 	console.log(error.message);
+
+			// });
+
+			axiosSecure.patch(url, olduser)
+					.then(response => {
+						console.log(response);
+						if (response.data.modifiedCount > 0) {
+							Swal.fire({
+								title: 'Sign In!',
+								text: 'Sign In with google Successfully',
+								icon: 'success',
+								confirmButtonText: 'Explore'
+							})
+						}
+					})
+
+				navigate(location?.state ? location.state : '/')
+			})
+			.catch((error) => {
+				
+				const errorMessage = error.message;
+
+				if (errorMessage === "Firebase: Error (auth/invalid-login-credentials).")
+					
+					Swal.fire({
+						title: "Invalid Credential",
+						showClass: {
+							popup: 'animate__animated animate__fadeInDown'
+						},
+						hideClass: {
+							popup: 'animate__animated animate__fadeOutUp'
+						}
+					})
+			});
+
+	}
 	return (
 		<div className="max-w-7xl mx-auto my-16">
 			<div className="w-full max-w-md p-4 rounded-md shadow sm:p-8 bg-gray-900 text-gray-100 mx-auto">
@@ -80,13 +142,13 @@ const Login = () => {
 					<Link to={'/signup'} className="focus:underline hover:underline">Sign up here</Link>
 				</p>
 				<div className="my-6 space-y-4">
-					<button aria-label="Login with Google" type="button" className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md  border-gray-400 focus:ri">
+					<button onClick={handlegoogle} aria-label="Login with Google" type="button" className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md  border-gray-400 focus:ri">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" className="w-5 h-5 fill-current">
 							<path d="M16.318 13.714v5.484h9.078c-0.37 2.354-2.745 6.901-9.078 6.901-5.458 0-9.917-4.521-9.917-10.099s4.458-10.099 9.917-10.099c3.109 0 5.193 1.318 6.38 2.464l4.339-4.182c-2.786-2.599-6.396-4.182-10.719-4.182-8.844 0-16 7.151-16 16s7.156 16 16 16c9.234 0 15.365-6.49 15.365-15.635 0-1.052-0.115-1.854-0.255-2.651z"></path>
 						</svg>
 						<p>Login with Google</p>
 					</button>
-					
+
 
 				</div>
 				<div className="flex items-center w-full my-4">

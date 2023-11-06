@@ -2,7 +2,7 @@
 import useAuth from "../../../Hooks/useAuth";
 import useAxiossecure from "../../../Hooks/useAxiossecure";
 // import axios from 'axios';
-
+import Swal from 'sweetalert2'
 const Addfood = () => {
 
     const axiosSecure = useAxiossecure()
@@ -49,18 +49,27 @@ const Addfood = () => {
         //     })
 
         const url = `/newfood`;
-
-
-        // axios.post(url,newfood)
-        //     .then(res => {
-        //         console.log(res)
-        //     })
         axiosSecure.post(url, newfood)
             .then(function (response) {
                 console.log(response);
+                if (response.data.insertedId) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Thanks for your donation',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    })
+                    form.reset()
+                }
             })
             .catch(function (error) {
                 console.log(error);
+                Swal.fire({
+                    title: 'Something Went Wrong!',
+                    text: error,
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                })
             });
 
     }

@@ -2,7 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 import moment from 'moment';
 import useAxiossecure from "../../../Hooks/useAxiossecure";
-
+import Swal from 'sweetalert2'
 const Singlefood = () => {
     const food = useLoaderData()
     const { user } = useAuth()
@@ -31,37 +31,57 @@ const Singlefood = () => {
         const expiredate = food.expiredate
         const image = form.image.value;
         const note = form.note.value;
-        const status=food.status
-        const requestedFood = {foodid, foodname, quantity, address, expiredate, note, image, donar_name, donar_email, Requester_email,Requester_name,Requester_image,donation_money,requestdate, requesttime, status}
+        const status = food.status
+        const requestedFood = { foodid, foodname, quantity, address, expiredate, note, image, donar_name, donar_email, Requester_email, Requester_name, Requester_image, donation_money, requestdate, requesttime, status }
         console.log(requestedFood);
 
         const url = `/requestedfood`;
         axiosSecure.post(url, requestedFood)
-        .then(function (response) {
-            console.log(response);
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
+            .then(function (response) {
+                console.log(response);
+                if (response.data.insertedId) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Your Request has been Placed',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    })
+                    form.reset()
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
 
     }
     return (
         <div>
-            <section className="bg-gray-800 text-gray-100">
-                <div className="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
-                    <div className="block max-w-sm gap-3 mx-auto sm:max-w-full group bg-gray-900">
-                        <img src={food.image} alt="" className="object-cover w-full h-64 rounded sm:h-96 lg:col-span-7 bg-gray-500" />
-                        <div className="p-6 space-y-2 lg:col-span-5">
+            <section className=" text-gray-100 my-16">
+                <div className="container bg-gray-800  max-w-4xl p-6 mx-auto space-y-6 sm:space-y-12">
+                    <div className="flex relative gap-3 mx-auto sm:max-w-full group bg-gray-900">
+                        <img src={food.image} alt="" className="object-cover  w-full h-full rounded  lg:col-span-7 bg-gray-500" />
+                        <div className="p-6 space-y-2 md:w-4/6">
                             <h3 className="text-2xl font-semibold sm:text-4xl">{food.foodname}</h3>
-                            <span className="text-xs text-gray-400 ">{food.expiredate}</span>
-                            <p className="mb-16">{food.quantity}</p>
+                            <span className="text-lg text-gray-400 ">Expire Date: {food.expiredate}</span>
+                            <p className="text-lg text-gray-400 "> Quantity: {food.quantity}</p>
+                            <p className="text-lg text-gray-400 "> Pickup: {food.address}</p>
                             {/* <button className="px-8 py-3 font-semibold border rounded text-2xl border-gray-100 text-gray-100" htmlFor="my_modal_7">Request</button> */}
+                            <div className="h-4">
+
+                            </div>
+
                             <label htmlFor="my_modal_7" className="px-5 py-1 font-semibold border rounded text-2xl border-gray-100  text-gray-100">Request</label>
+                            <div className="flex space-x-2 absolute bottom-2 right-2">
+                            
+                                <span className="self-center text-sm">by {food.donar_name}</span>
+                                <img alt="" src={food.donar_image} className="object-cover w-8 h-8 rounded-full shadow bg-gray-500" />
+                            </div>
 
                         </div>
                     </div>
 
                 </div>
+
 
                 {/* Put this part before </body> tag */}
                 <input type="checkbox" id="my_modal_7" className="modal-toggle" />
@@ -82,21 +102,21 @@ const Singlefood = () => {
                                     </div>
                                     <div className="col-span-full sm:col-span-3">
 
-                                        <input name="address" type="text" defaultValue={food.address} className="w-full rounded-md focus:ring  border-gray-700 text-gray-900" disabled />
+                                        <input name="address" type="text" defaultValue={'PickUp: ' +food.address} className="w-full rounded-md focus:ring  border-gray-700 text-gray-900" disabled />
                                     </div>
 
                                     <div className="col-span-full sm:col-span-3">
 
-                                        <input name="uemail" type="email" className="w-full rounded-md focus:ring   border-gray-700 text-gray-900" defaultValue={user.email} disabled />
+                                        <input name="uemail" type="email" className="w-full rounded-md focus:ring   border-gray-700 text-gray-900" defaultValue={'Your Email: ' + user.email} disabled />
                                     </div>
 
                                     <div className="col-span-full sm:col-span-3">
 
-                                        <input name="dname" type="text" className="w-full rounded-md focus:ring   border-gray-700 text-gray-900" defaultValue={food.donar_name} disabled />
+                                        <input name="dname" type="text" className="w-full rounded-md focus:ring   border-gray-700 text-gray-900" defaultValue={'by ' +food.donar_name} disabled />
                                     </div>
                                     <div className="col-span-full sm:col-span-3">
 
-                                        <input name="demail" type="email" className="w-full rounded-md focus:ring   border-gray-700 text-gray-900" defaultValue={food.donar_email} disabled />
+                                        <input name="demail" type="email" className="w-full rounded-md focus:ring   border-gray-700 text-gray-900" defaultValue={'by ' + food.donar_email} disabled />
                                     </div>
 
                                     <div className="col-span-full sm:col-span-2">
@@ -120,7 +140,7 @@ const Singlefood = () => {
                                     </div>
                                     <div className="col-span-full sm:col-span-full">
 
-                                        <input name="image" type="text" placeholder="Food Image" className="w-full rounded-md focus:ring  border-gray-700 text-gray-900" defaultValue={food.image} />
+                                        <input name="image" type="text" placeholder="Food Image" className="w-full rounded-md focus:ring  border-gray-700 text-gray-900" defaultValue={food.image} disabled/>
                                     </div>
 
                                     <div className="col-span-full">
@@ -137,7 +157,7 @@ const Singlefood = () => {
 
                     <label className="modal-backdrop" htmlFor="my_modal_7">Close</label>
                 </div>
-               
+
             </section>
         </div>
     );
