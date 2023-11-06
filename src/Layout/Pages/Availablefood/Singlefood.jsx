@@ -1,12 +1,47 @@
 import { useLoaderData } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
-
+import moment from 'moment';
+import useAxiossecure from "../../../Hooks/useAxiossecure";
 
 const Singlefood = () => {
     const food = useLoaderData()
     const { user } = useAuth()
+    const axiosSecure = useAxiossecure()
+    var date = moment();
+    var currentDate = date.format('D/MM/YYYY');
+    console.log(typeof (currentDate))
     const handlerequest = e => {
+        e.preventDefault();
+        const form = e.target;
+        const foodname = form.foodname.value;
+        const foodid = form.foodid.value;
+        const quantity = food.quantity;
+        const address = form.address.value;
+        const Requester_email = form.uemail.value;
+        const Requester_name = user.displayName;
+        const Requester_image = user.photoURL;
+        const donar_email = form.demail.value;
+        const donar_name = form.dname.value;
+        const donation_money = form.money.value;
 
+        const requestdate = currentDate;
+        const currentTime = date.format("h:mm:ss a");
+        const requesttime = currentTime;
+
+        const expiredate = food.expiredate
+        const image = form.image.value;
+        const note = form.note.value;
+        const requestedFood = {foodid, foodname, quantity, address, expiredate, note, image, donar_name, donar_email, Requester_email,Requester_name,Requester_image,donation_money,requestdate, requesttime}
+        console.log(requestedFood);
+
+        const url = `/requestedfood`;
+        axiosSecure.post(url, requestedFood)
+        .then(function (response) {
+            console.log(response);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
 
     }
     return (
@@ -20,8 +55,8 @@ const Singlefood = () => {
                             <span className="text-xs text-gray-400 ">{food.expiredate}</span>
                             <p className="mb-16">{food.quantity}</p>
                             {/* <button className="px-8 py-3 font-semibold border rounded text-2xl border-gray-100 text-gray-100" htmlFor="my_modal_7">Request</button> */}
-                           <label htmlFor="my_modal_7" className="px-5 py-1 font-semibold border rounded text-2xl border-gray-100  text-gray-100">Request</label>
-                            
+                            <label htmlFor="my_modal_7" className="px-5 py-1 font-semibold border rounded text-2xl border-gray-100  text-gray-100">Request</label>
+
                         </div>
                     </div>
 
@@ -30,10 +65,10 @@ const Singlefood = () => {
                 {/* Put this part before </body> tag */}
                 <input type="checkbox" id="my_modal_7" className="modal-toggle" />
                 <div className="modal">
-                    <div className="max-w-4xl mx-auto modal-box bg-transparent">
+                    <div className="max-w-4xl mx-auto modal-box bg-transparent ">
 
                         <form onSubmit={handlerequest} className="container  mx-auto space-y-5 relative">
-                           
+
                             <fieldset className="  p-6 rounded-md shadow-sm bg-gray-900 justify-center">
 
                                 <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3 mx-6  space-y-3">
@@ -66,23 +101,21 @@ const Singlefood = () => {
                                     <div className="col-span-full sm:col-span-2">
 
                                         <input name="expiredate" placeholder="Date"
-                                            type="date"
+                                            type="text"
 
-                                            className="w-full rounded-md focus:ring  border-gray-700 text-gray-900" defaultValue={food.expiredate} disabled />
+                                            className="w-full rounded-md focus:ring  border-gray-700 text-gray-900" defaultValue={'Expire Date : ' + food.expiredate} disabled />
                                     </div>
                                     <div className="col-span-full sm:col-span-2">
 
-                                        <input name="requestdate" placeholder="Date"
-                                            type="date"
+                                        <input name="requestdate" placeholder="Date" defaultValue={'RequestDate : ' + currentDate}
+                                            type="text"
 
                                             className="w-full rounded-md focus:ring  border-gray-700 text-gray-900" disabled />
                                     </div>
                                     <div className="col-span-full sm:col-span-2">
 
-                                        <input name="requestdate" placeholder="Donation money"
-                                            type="number"
-
-                                            className="w-full rounded-md focus:ring  border-gray-700 text-gray-900" />
+                                        <input name="money" placeholder="Donation money"
+                                            type="number" className="w-full rounded-md focus:ring  border-gray-700 text-gray-900" />
                                     </div>
                                     <div className="col-span-full sm:col-span-full">
 
