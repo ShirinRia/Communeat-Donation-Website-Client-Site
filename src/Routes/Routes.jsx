@@ -13,11 +13,12 @@ import Singlefood from "../Layout/Pages/Availablefood/Singlefood";
 import Managefood from "../Layout/Pages/Managemyfood/Managefood";
 import Myfoodrequest from "../Layout/Pages/MyFoodRequest/Myfoodrequest";
 import Manage from "../Layout/Pages/ManageSingleFoodRequest/Manage";
+import Errorpage from "../Layout/Pages/Errorpage/Errorpage";
 const Routes = createBrowserRouter([
     {
         path: "/",
         element: <Root />,
-        // errorElement: <Errorpage></Errorpage>,
+        errorElement: <Errorpage></Errorpage>,
         children: [
             {
                 path: "/",
