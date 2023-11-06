@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import useFood from "../../../../Hooks/useFood";
 import Foodcard from "../../Availablefood/Foodcard";
-import { useState } from "react";
+
 
 
 const Featuredfood = () => {
     const allfoods = useFood()
-    const [length, setlength] = useState(10)
+    const length=10
     const sortallfoods = [...allfoods].sort((a, b) =>
         a.expiredate < b.expiredate ? 1 : -1,
     );

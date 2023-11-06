@@ -1,13 +1,16 @@
-import { useLoaderData } from "react-router-dom";
+
 import Foodcard from "./Foodcard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useFood from "../../../Hooks/useFood";
 
 const Availablefood = () => {
     // const allfoods = useLoaderData()
     const allfoods=useFood()
     console.log('allfoods',allfoods)
-    const [availablefoods, setavailablefoods] = useState(allfoods)
+    const [availablefoods, setavailablefoods] = useState([])
+    useEffect(() => {
+        setavailablefoods(allfoods)
+    }, [allfoods])
     console.log('availablefood',availablefoods)
    
     const handlesearch = e => {

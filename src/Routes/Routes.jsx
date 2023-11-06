@@ -10,6 +10,7 @@ import Signup from "../Layout/Pages/Signup/Signup";
 import PrivateRoute from "./PrivateRoute";
 import Availablefood from "../Layout/Pages/Availablefood/Availablefood";
 import Singlefood from "../Layout/Pages/Availablefood/Singlefood";
+import Managefood from "../Layout/Pages/Managemyfood/Managefood";
 const Routes = createBrowserRouter([
     {
         path: "/",
@@ -36,6 +37,10 @@ const Routes = createBrowserRouter([
             {
                 path: "/signup",
                 element: <Signup/>,
+            },
+            {
+                path: "/managefood",
+                element: <PrivateRoute><Managefood/></PrivateRoute>,
             },
             {
                 path: "/singlefood/:id",

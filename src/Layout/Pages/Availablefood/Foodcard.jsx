@@ -1,8 +1,8 @@
 import { BiRightArrowCircle } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
-
+import PropTypes from 'prop-types'; // ES6
 const Foodcard = ({ foodcard }) => {
-    const { _id,address, image, foodname, quantity, status, expiredate, note } = foodcard
+    const { _id,address, image, foodname, quantity, expiredate, note } = foodcard
     return (
        
             <div className="flex flex-col max-w-lg p-6 space-y-6 overflow-hidden rounded-lg shadow-md bg-gray-900 text-gray-100">
@@ -34,5 +34,7 @@ const Foodcard = ({ foodcard }) => {
         
     );
 };
-
+Foodcard.propTypes = {
+    foodcard: PropTypes.object,
+};
 export default Foodcard;
