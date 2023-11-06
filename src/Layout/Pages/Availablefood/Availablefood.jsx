@@ -1,16 +1,15 @@
 import { useLoaderData } from "react-router-dom";
 import Foodcard from "./Foodcard";
 import { useState } from "react";
+import useFood from "../../../Hooks/useFood";
 
 const Availablefood = () => {
-    const allfoods = useLoaderData()
+    // const allfoods = useLoaderData()
+    const allfoods=useFood()
+    console.log('allfoods',allfoods)
     const [availablefoods, setavailablefoods] = useState(allfoods)
-    // const sortfoodsbyexpiredate = () => {
-    //     const sortallfoods = [...allfoods].sort((a, b) =>
-    //         a.expiredate < b.expiredate ? 1 : -1,
-    //     );
-    //     setavailablefoods(sortallfoods)
-    // }
+    console.log('availablefood',availablefoods)
+   
     const handlesearch = e => {
         e.preventDefault();
         const formreg = new FormData(e.currentTarget);
