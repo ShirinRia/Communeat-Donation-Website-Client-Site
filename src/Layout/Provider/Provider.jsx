@@ -9,7 +9,6 @@ const googleprovider = new GoogleAuthProvider();
 const auth = getAuth(app)
 const Provider = ({ children }) => {
     const [user, setuser] = useState(null)
-    const [uid, setuid] = useState(null)
     const [loading, setloading] = useState(true)
     // const [theme, settheme] = useState(false)
 
@@ -35,14 +34,9 @@ const Provider = ({ children }) => {
     useEffect(() => {
 
         const unsubscribe = onAuthStateChanged(auth, (currentuser) => {
-
+            console.log(currentuser)
             if (currentuser) {
-
-                const uid = currentuser.uid;
-
                 setuser(currentuser)
-                console.log('user', uid)
-                setuid(currentuser.uid)
                 setloading(false)
             }
             else {
@@ -61,7 +55,6 @@ const Provider = ({ children }) => {
         signin,
         signgoogle,
         loading,
-        uid,
         // theme,
         // settheme,
     }

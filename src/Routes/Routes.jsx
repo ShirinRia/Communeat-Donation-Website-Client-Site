@@ -40,7 +40,7 @@ const Routes = createBrowserRouter([
             {
                 path: "/singlefood/:id",
                 element: <PrivateRoute><Singlefood></Singlefood></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/carts/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/singlefood/${params.id}`)
               },
         ],
     },

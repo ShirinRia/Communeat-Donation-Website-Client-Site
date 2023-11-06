@@ -1,12 +1,14 @@
 
+import useAuth from "../../../Hooks/useAuth";
 import useAxiossecure from "../../../Hooks/useAxiossecure";
 // import axios from 'axios';
 
 const Addfood = () => {
-    
-    const axiosSecure=useAxiossecure()
-    
-   
+
+    const axiosSecure = useAxiossecure()
+
+    const { user } = useAuth()
+    console.log(user)
     const handleaddproduct = e => {
         e.preventDefault();
         const form = e.target;
@@ -17,10 +19,13 @@ const Addfood = () => {
         const expiredate = form.expiredate.value;
         const note = form.note.value;
         const image = form.image.value;
-        const newfood = { foodname, quantity, address, status, expiredate, note, image }
+        const donar_name = user.displayName
+        const donar_email = user.email
+        const donar_image = user.photoURL
+        const newfood = { foodname, quantity, address, status, expiredate, note, image, donar_name, donar_email, donar_image }
         console.log(newfood);
-        
-       
+
+
         // fetch('http://localhost:5000/newfood',
         //     {
         //         method: 'POST',
@@ -44,20 +49,20 @@ const Addfood = () => {
         //     })
 
         const url = `/newfood`;
-       
-           
-            // axios.post(url,newfood)
-            //     .then(res => {
-            //         console.log(res)
-            //     })
-            axiosSecure.post(url, newfood)
-                  .then(function (response) {
-                    console.log(response);
-                  })
-                  .catch(function (error) {
-                    console.log(error);
-                  });
-    
+
+
+        // axios.post(url,newfood)
+        //     .then(res => {
+        //         console.log(res)
+        //     })
+        axiosSecure.post(url, newfood)
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
     }
     return (
 

@@ -1,9 +1,16 @@
 import { useLoaderData } from "react-router-dom";
 import Foodcard from "./Foodcard";
-
+import { useState } from "react";
 
 const Availablefood = () => {
-    const availablefoods = useLoaderData()
+    const allfoods = useLoaderData()
+    const [availablefoods, setavailablefoods] = useState(allfoods)
+    // const sortfoodsbyexpiredate = () => {
+    //     const sortallfoods = [...allfoods].sort((a, b) =>
+    //         a.expiredate < b.expiredate ? 1 : -1,
+    //     );
+    //     setavailablefoods(sortallfoods)
+    // }
     const handlesearch = e => {
         e.preventDefault();
         const formreg = new FormData(e.currentTarget);
@@ -12,6 +19,13 @@ const Availablefood = () => {
     }
     const DoSubmit = (e) => {
         console.log(e.target.value)
+        const sortby = e.target.value
+        if (sortby === "Sort by Expire date") {
+            const sortallfoods = [...allfoods].sort((a, b) =>
+                a.expiredate < b.expiredate ? 1 : -1,
+            );
+            setavailablefoods(sortallfoods)
+        }
     }
     return (
         <div className="max-w-7xl mx-auto my-16">
@@ -32,6 +46,7 @@ const Availablefood = () => {
                 <div className="inline-flex items-center divide-x rounded dark:bg-violet-400 dark:text-gray-800 divide-gray-700 w-1/6">
 
                     <select name='PreviousReceiver' onChange={DoSubmit} className="w-full py-4">
+                        <option disabled selected>Sort by</option>
                         <option value='Sort by Expire date'>Sort by Expire date</option>
                         <option value='Sort by Quantity'>Sort by Quantity</option>
 
@@ -46,7 +61,7 @@ const Availablefood = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-center max-w-6xl mx-auto my-16">
                 {
                     availablefoods.map(foodcard => <Foodcard key={foodcard._id}
-                    foodcard={foodcard}></Foodcard>)
+                        foodcard={foodcard}></Foodcard>)
                 }
             </div>
         </div>
