@@ -17,7 +17,7 @@ const Navbar = () => {
         <li className="font-medium"><NavLink to={'foodrequest'}>My Food Request</NavLink></li>
     </>
     return (
-        <div>
+        <div className="mb-8">
             <header className="p-4 dark:bg-gray-800 dark:text-gray-100 bg-gray-800 text-gray-100">
                 <div className="container flex justify-between h-16 max-w-7xl mx-auto">
 

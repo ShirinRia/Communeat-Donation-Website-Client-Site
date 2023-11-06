@@ -1,5 +1,9 @@
 import './Banner.css'
 import banner from "../../../../assets/raf,360x360,075,t,fafafa_ca443f4786.jpg"
+import banner2 from "../../../../assets/banner-2.jpg"
+import banner3 from "../../../../assets/banner-3.jpg"
+import banner4 from "../../../../assets/banner-4.jpg"
+
 import Carousel from 'react-elastic-carousel'
 const Banner = () => {
     return (
@@ -14,12 +18,11 @@ const Banner = () => {
 
                 transitionMs={700} enableAutoPlay autoPlaySpeed={1500}
             >
-                <item><img src={banner} alt="" className='w-[100vw] h-[70vh]' /></item>
-                <item>2</item>
-                <item>3</item>
-                <item>4</item>
-                <item>5</item>
-                <item>6</item>
+                <img src={banner} alt="" className='w-[100vw] h-[70vh]' />
+                <img src={banner2} alt="" className='w-[100vw] h-[70vh]' />
+                <img src={banner3} alt="" className='w-[100vw] h-[70vh]' />
+                <img src={banner4} alt="" className='w-[100vw] h-[70vh]' />
+                
             </Carousel>
         </section>
 
