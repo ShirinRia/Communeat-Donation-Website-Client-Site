@@ -137,12 +137,7 @@ const Singlefood = () => {
 
                     <label className="modal-backdrop" htmlFor="my_modal_7">Close</label>
                 </div>
-                {/* <dialog id="my_modal_3" className="modal">
-
-                   
-                    {/* if there is a button in form, it will close the modal */}
-
-                {/* </dialog> */}
+               
             </section>
         </div>
     );

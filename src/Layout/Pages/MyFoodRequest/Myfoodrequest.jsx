@@ -18,7 +18,7 @@ const Myfoodrequest = () => {
     }, [axiosSecure, url])
     console.log(myrequestedfoods)
     return (
-        <div className="max-w-7xl mx-auto my-16">
+        <div className="max-w-7xl mx-auto my-16 ">
             {myrequestedfoods.map(myrequestedfood => <Foodrequest
                 key={myrequestedfood._id}
                 myrequestedfood={myrequestedfood}>
