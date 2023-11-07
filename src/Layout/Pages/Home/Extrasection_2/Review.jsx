@@ -19,11 +19,11 @@ const Review = ({ reviews }) => {
     dots: false
   };
   return (
-    <div className="cont max-w-2xl ">
+    <div className="cont max-w-[324px] md:max-w-2xl ">
       <Slider {...settings}>
-        <div className="h-96 py-36 flex items-center justify-center rounded-md  text-gray-800 ">
+        <div className="h-96 flex items-center justify-center rounded-md  text-gray-800 ">
 
-          <div ><h4 className="font-bold text-center text-5xl">Testimonials</h4></div>
+          <div className="h-1/2  flex items-center justify-center"><h4 className="font-bold text-center text-3xl md:text-5xl">Testimonials</h4></div>
 
         </div>
         {

@@ -1,7 +1,7 @@
 .cont {
     padding: 40px;
     /* background: #419be0; */
-    height: 400px;
+    height: 300px;
   }
   
   .slick-slide img {
@@ -9,6 +9,9 @@
   }
   .slick-arrow{
     /* background:#419be0; */
-    scale:3
+    scale:2
+  }
+  .slick-prev, .slick-next{
+    top:30%
   }
   
