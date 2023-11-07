@@ -1,7 +1,7 @@
 import useAxiossecure from "../../../Hooks/useAxiossecure";
 import Swal from 'sweetalert2'
 
-const Foodrequest = ({ myrequestedfood }) => {
+const Foodrequest = ({ myrequestedfood ,myrequestedfoods,setmyrequestedfoods}) => {
     const axiosSecure=useAxiossecure()
     const {_id,status,image,foodname}=myrequestedfood
     
@@ -13,7 +13,8 @@ const Foodrequest = ({ myrequestedfood }) => {
                 .then(res => {
                     console.log(res.data.deletedCount)
                     if (res.data.deletedCount > 0) {
-
+                        const filtered = myrequestedfoods.filter(cart => cart._id !== id_)
+                        setmyrequestedfoods(filtered)
                         Swal.fire({
                             title: 'Congratulations',
                             text: 'Your Requested Removed',

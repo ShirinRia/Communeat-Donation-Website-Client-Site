@@ -1,47 +1,9 @@
 import { Link, NavLink } from "react-router-dom";
 import './Navbar.css'
 import useAuth from "../../../../Hooks/useAuth";
-// import { useState, useEffect } from "react";
-// import { useAnimate, stagger, motion } from "framer-motion";
 
-// const staggerMenuItems = stagger(0.1, { startDelay: 0.15 });
-// function useMenuAnimation(isOpen) {
-//     const [scope, animate] = useAnimate();
-  
-//     useEffect(() => {
-//       animate(".arrow", { rotate: isOpen ? 180 : 0 }, { duration: 0.2 });
-  
-//       animate(
-//         "ul",
-//         {
-//           clipPath: isOpen
-//             ? "inset(0% 0% 0% 0% round 10px)"
-//             : "inset(10% 50% 90% 50% round 10px)"
-//         },
-//         {
-//           type: "spring",
-//           bounce: 0,
-//           duration: 0.5
-//         }
-//       );
-  
-//       animate(
-//         "li",
-//         isOpen
-//           ? { opacity: 1, scale: 1, filter: "blur(0px)" }
-//           : { opacity: 0, scale: 0.3, filter: "blur(20px)" },
-//         {
-//           duration: 0.2,
-//           delay: isOpen ? staggerMenuItems : 0
-//         }
-//       );
-//     }, [animate, isOpen]);
-  
-//     return scope;
-//   }
 const Navbar = () => {
-    // const [isOpen, setIsOpen] = useState(false);
-    // const scope = useMenuAnimation(isOpen);
+
     const { user, logout } = useAuth()
     const handlelogout = () => {
         logout()
@@ -51,9 +13,14 @@ const Navbar = () => {
     const navlinks = <>
         <li className="font-medium"><NavLink to={'/'}>Home</NavLink></li>
         <li className="font-medium"><NavLink to={'/avfood'}>Available Foods</NavLink> </li>
-        <li className="font-medium"><NavLink to={'/addfood'}>Add Food</NavLink></li>
+       
+       { user &&
+            <>
+            <li className="font-medium"><NavLink to={'/addfood'}>Add Food</NavLink></li>
         <li className="font-medium"><NavLink to={'/managefood'}>Manage My Foods</NavLink></li>
         <li className="font-medium"><NavLink to={'/foodrequest'}>My Food Request</NavLink></li>
+
+            </>}
     </>
     return (
         <div className="mb-8">
@@ -68,7 +35,7 @@ const Navbar = () => {
 
                             </svg>
                         </div>
-                        <h1 className="text-3xl ml-2 font-medium hidden md:visible">Communeat</h1>
+                        <h1 className="text-3xl ml-2 font-medium hidden md:block">Communeat</h1>
                     </a>
                     <ul className="items-center hidden space-x-3 lg:flex">
 

@@ -1,7 +1,7 @@
 
 
 const Reviewcard = ({review}) => {
-    console.log(review._id)
+  
    
     return (
         <div>
