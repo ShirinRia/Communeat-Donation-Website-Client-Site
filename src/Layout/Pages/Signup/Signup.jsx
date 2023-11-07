@@ -3,6 +3,7 @@ import Swal from 'sweetalert2'
 import useAuth from "../../../Hooks/useAuth";
 import { updateProfile } from "firebase/auth";
 import useAxiossecure from "../../../Hooks/useAxiossecure";
+import { Helmet } from "react-helmet-async";
 const Signup = () => {
     const { createuser } = useAuth()
     const navigate = useNavigate();
@@ -80,30 +81,19 @@ const Signup = () => {
                         axiosSecure.post(url, newuserdata)
                             .then(function (response) {
                                 console.log(response);
+                                if (response.data.insertedId) {
+                                    Swal.fire({
+                                        title: 'Success!',
+                                        text: 'Registered with email Successfully',
+                                        icon: 'success',
+                                        confirmButtonText: 'OK'
+                                    })
+                                }
                             })
                             .catch(function (error) {
                                 console.log(error);
                             });
-                        // fetch('https://cosmetics-beauty-backend-mimjpskj0-shirin-sultanas-projects.vercel.app/users',
-                        //     {
-                        //         method: 'POST',
-                        //         headers: {
-                        //             'content-type': 'application/json',
-                        //         },
-                        //         body: JSON.stringify(newuserdata)
-                        //     })
-                        //     .then(res => res.json())
-                        //     .then(data => {
-                        //         console.log(data)
-                        //         if (data.insertedId) {
-                        //             Swal.fire({
-                        //                 title: 'Success!',
-                        //                 text: 'Registered with email Successfully',
-                        //                 icon: 'success',
-                        //                 confirmButtonText: 'OK'
-                        //             })
-                        //         }
-                        //     })
+                       
                         navigate("/");
 
                     })
@@ -125,6 +115,15 @@ const Signup = () => {
             .catch((error) => {
                 const er = error.message;
                 console.log(er)
+                Swal.fire({
+                    title: `${er}`,
+                    showClass: {
+                        popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__fadeOutUp'
+                    }
+                })
 
             });
 
@@ -132,6 +131,9 @@ const Signup = () => {
 
     return (
         <div className="max-w-7xl mx-auto">
+            <Helmet>
+                <title>Communeat | SignUp</title>
+            </Helmet>
             <div className="w-full max-w-md p-4 rounded-md shadow sm:p-8 bg-gray-900 text-gray-100 mx-auto">
                 <h2 className="mb-3 text-3xl font-semibold text-center">Login to your account</h2>
                 <p className="text-sm text-center text-gray-400"> <span>Dont have account? </span>

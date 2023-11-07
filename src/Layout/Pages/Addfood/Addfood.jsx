@@ -1,4 +1,5 @@
 
+import { Helmet } from "react-helmet-async";
 import useAuth from "../../../Hooks/useAuth";
 import useAxiossecure from "../../../Hooks/useAxiossecure";
 // import axios from 'axios';
@@ -76,6 +77,9 @@ const Addfood = () => {
     return (
 
         <section className="p-6  text-gray-50 max-w-7xl mx-auto">
+            <Helmet>
+                <title>Communeat | AddFood</title>
+            </Helmet>
             <form onSubmit={handleaddproduct} className="container  mx-auto space-y-12">
                 <fieldset className="  p-6 rounded-md shadow-sm bg-gray-900 justify-center">
 

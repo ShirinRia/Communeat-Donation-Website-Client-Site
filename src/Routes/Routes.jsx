@@ -14,7 +14,7 @@ import Managefood from "../Layout/Pages/Managemyfood/Managefood";
 import Myfoodrequest from "../Layout/Pages/MyFoodRequest/Myfoodrequest";
 import Manage from "../Layout/Pages/ManageSingleFoodRequest/Manage";
 import Errorpage from "../Layout/Pages/Errorpage/Errorpage";
-// import Review from "../Review";
+
 
 
 const Routes = createBrowserRouter([
@@ -44,10 +44,7 @@ const Routes = createBrowserRouter([
                 path: "/signup",
                 element: <Signup />,
             },
-            // {
-            //     path: "/text",
-            //     element: <Review />,
-            // },
+           
             {
                 path: "/managefood",
                 element: <PrivateRoute><Managefood /></PrivateRoute>,
@@ -62,13 +59,9 @@ const Routes = createBrowserRouter([
                 element: <PrivateRoute><Singlefood></Singlefood></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/singlefood/${params.id}`)
             },
+            
             {
-                path: "/singlefood/:id",
-                element: <PrivateRoute><Singlefood></Singlefood></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/singlefood/${params.id}`)
-            },
-            {
-                path: "/manage/:id",
+                path: "/manage/:id/:name",
                 element: <PrivateRoute><Manage></Manage></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/manage/${params.id}`)
             },

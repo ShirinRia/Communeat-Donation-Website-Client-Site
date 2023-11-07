@@ -2,6 +2,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
 import useAuth from "../../../Hooks/useAuth";
 import useAxiossecure from "../../../Hooks/useAxiossecure";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
 	const navigate = useNavigate()
@@ -74,32 +75,6 @@ const Login = () => {
 					lastloggedat: user?.metadata?.lastSignInTime
 				}
 
-			// 	fetch('https://cosmetics-beauty-backend-mimjpskj0-shirin-sultanas-projects.vercel.app/users',
-			// 		{
-			// 			method: 'PATCH',
-			// 			headers: {
-			// 				'content-type': 'application/json',
-			// 			},
-			// 			body: JSON.stringify(olduser)
-			// 		})
-			// 		.then(res => res.json())
-			// 		.then(data => {
-			// 			// console.log(data)
-			// 			if (data.modifiedCount > 0) {
-			// 				Swal.fire({
-			// 					title: 'Success!',
-			// 					text: 'Sign In with google Successfully',
-			// 					icon: 'success',
-			// 					confirmButtonText: 'OK'
-			// 				})
-			// 			}
-			// 		})
-			// 	navigate(location?.state ? location.state : '/')
-			// }).catch((error) => {
-
-			// 	console.log(error.message);
-
-			// });
 
 			axiosSecure.patch(url, olduser)
 					.then(response => {
@@ -136,6 +111,9 @@ const Login = () => {
 	}
 	return (
 		<div className="max-w-7xl mx-auto my-16">
+			<Helmet>
+				<title>Communeat | Login</title>
+			</Helmet>
 			<div className="w-full max-w-md p-4 rounded-md shadow sm:p-8 bg-gray-900 text-gray-100 mx-auto">
 				<h2 className="mb-3 text-3xl font-semibold text-center">Login to your account</h2>
 				<p className="text-sm text-center text-gray-400"> <span>Dont have account? </span>

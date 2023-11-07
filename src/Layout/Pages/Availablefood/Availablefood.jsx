@@ -2,12 +2,14 @@
 import Foodcard from "./Foodcard";
 import { useEffect, useState } from "react";
 import useFood from "../../../Hooks/useFood";
+import { Helmet } from "react-helmet-async";
 
 const Availablefood = () => {
     // const allfoods = useLoaderData()
     const allfoods = useFood()
     console.log('allfoods', allfoods)
     const [availablefoods, setavailablefoods] = useState([])
+    const [title, settitle] = useState("Allfoods")
     useEffect(() => {
         setavailablefoods(allfoods)
     }, [allfoods])
@@ -18,6 +20,7 @@ const Availablefood = () => {
         const formreg = new FormData(e.currentTarget);
         const searchtext = formreg.get('search')
         console.log(searchtext)
+        settitle(searchtext)
         const filtered = allfoods.filter(food => food.foodname.toLowerCase() === searchtext.toLowerCase())
         setavailablefoods(filtered)
     }
@@ -39,6 +42,9 @@ const Availablefood = () => {
     }
     return (
         <div className="max-w-7xl mx-auto my-16">
+            <Helmet>
+                <title>Communeat | {title}</title>
+            </Helmet>
             <div className="flex gap-5">
                 <form onSubmit={handlesearch} className="w-5/6">
                     <div className="border-2 border-gray-400 flex rounded-md">

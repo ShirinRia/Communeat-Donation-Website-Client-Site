@@ -3,6 +3,7 @@ import useAuth from "../../../Hooks/useAuth";
 import moment from 'moment';
 import useAxiossecure from "../../../Hooks/useAxiossecure";
 import Swal from 'sweetalert2'
+import { Helmet } from "react-helmet-async";
 const Singlefood = () => {
     const food = useLoaderData()
     const { user } = useAuth()
@@ -56,6 +57,9 @@ const Singlefood = () => {
     }
     return (
         <div>
+            <Helmet>
+                <title>Communeat | {food.foodname}</title>
+            </Helmet>
             <section className=" text-gray-100 my-16">
                 <div className="container bg-gray-800  max-w-4xl p-6 mx-auto space-y-6 sm:space-y-12">
                     <div className="flex relative gap-3 mx-auto sm:max-w-full group bg-gray-900">

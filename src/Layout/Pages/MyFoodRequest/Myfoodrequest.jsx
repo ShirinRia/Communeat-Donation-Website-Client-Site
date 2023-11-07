@@ -3,6 +3,7 @@ import useAuth from "../../../Hooks/useAuth";
 import useAxiossecure from "../../../Hooks/useAxiossecure";
 import Foodrequest from "./foodrequest";
 import Norequest from "./Norequest";
+import { Helmet } from "react-helmet-async";
 
 
 const Myfoodrequest = () => {
@@ -29,6 +30,9 @@ const Myfoodrequest = () => {
     console.log(myrequestedfoods)
     return (
         <div>
+            <Helmet>
+                <title>Communeat | Your Food Request</title>
+            </Helmet>
 {
             isproductavailable?<div className = "max-w-7xl mx-auto my-16 ">
             {

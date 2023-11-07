@@ -14,7 +14,8 @@ const Table = () => {
   console.log(user)
   const [Myfood, setmyfood] = useState([]);
 
-  const [xyz, setxyz] = useState([]);
+  const [xyz, setxyz] = useState();
+  const [name, setname] = useState();
   console.log('xyz', xyz)
   const axiosSecure = useAxiossecure()
   const url = `/userfood?email=${user?.email}`;
@@ -58,7 +59,7 @@ const Table = () => {
         }
         else {
           Swal.fire({
-            title: 'Success!',
+            title: 'Error!',
             text: 'Update FAILED',
             icon: 'error',
             confirmButtonText: 'Cool'
@@ -137,7 +138,9 @@ const Table = () => {
       cell: ({ row }) => {
         const x = row.original
         const id = x._id
+        const name=x.foodname
         setxyz(id)
+        setname(name)
         return (
           <div className='py-8 px-4 space-y-8'>
 
@@ -146,7 +149,7 @@ const Table = () => {
             <div >
               <button onClick={() => itemDelete(id)}><RiDeleteBin6Fill className='text-2xl' /></button>
             </div>
-            <div> <Link to={`/manage/${xyz}`}><SiNginxproxymanager className='text-2xl' /></Link></div>
+            <div> <Link to={`/manage/${xyz}/${name}`}><SiNginxproxymanager className='text-2xl' /></Link></div>
           </div>
         )
       }
