@@ -1,10 +1,48 @@
 import { Link, NavLink } from "react-router-dom";
 import './Navbar.css'
 import useAuth from "../../../../Hooks/useAuth";
+import { useAnimate, stagger, motion } from "framer-motion";
+import { useEffect, useState } from "react";
+const staggerMenuItems = stagger(0.1, { startDelay: 0.15 });
+function useMenuAnimation(isOpen) {
+    const [scope, animate] = useAnimate();
 
+    useEffect(() => {
+        //   animate(".arrow", { rotate: isOpen ? 180 : 0 }, { duration: 0.2 });
+
+        animate(
+            "ul",
+            {
+                clipPath: isOpen
+                    ? "inset(0% 0% 0% 0% round 10px)"
+                    : "inset(10% 50% 90% 50% round 10px)"
+            },
+            {
+                type: "spring",
+                bounce: 0,
+                duration: 0.5
+            }
+        );
+
+        animate(
+            "li",
+            isOpen
+                ? { opacity: 1, scale: 1, filter: "blur(0px)" }
+                : { opacity: 0, scale: 0.3, filter: "blur(20px)" },
+            {
+                duration: 0.2,
+                delay: isOpen ? staggerMenuItems : 0
+            }
+        );
+    }, [animate, isOpen]);
+
+    return scope;
+}
 const Navbar = () => {
 
     const { user, logout } = useAuth()
+    const [isOpen, setIsOpen] = useState(false);
+    const scope = useMenuAnimation(isOpen);
     const handlelogout = () => {
         logout()
             .then(() => { })
@@ -13,12 +51,12 @@ const Navbar = () => {
     const navlinks = <>
         <li className="font-medium"><NavLink to={'/'}>Home</NavLink></li>
         <li className="font-medium"><NavLink to={'/avfood'}>Available Foods</NavLink> </li>
-       
-       { user &&
+
+        {user &&
             <>
-            <li className="font-medium"><NavLink to={'/addfood'}>Add Food</NavLink></li>
-        <li className="font-medium"><NavLink to={'/managefood'}>Manage My Foods</NavLink></li>
-        <li className="font-medium"><NavLink to={'/foodrequest'}>My Food Request</NavLink></li>
+                <li className="font-medium"><NavLink to={'/addfood'}>Add Food</NavLink></li>
+                <li className="font-medium"><NavLink to={'/managefood'}>Manage My Foods</NavLink></li>
+                <li className="font-medium"><NavLink to={'/foodrequest'}>My Food Request</NavLink></li>
 
             </>}
     </>
@@ -67,10 +105,30 @@ const Navbar = () => {
                         </div>
 
                     </div>
-                    <button   className=" md:hidden">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 dark:text-gray-100">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
+                    <button className="md:hidden ">
+
+                        <nav className="menu" ref={scope}>
+                            <motion.button
+                                whileTap={{ scale: 0.97 }}
+                                onClick={() => setIsOpen(!isOpen)}
+                            >
+
+                                <div className=" flex justify-end" >
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 dark:text-gray-100">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                                    </svg>
+                                </div>
+                            </motion.button>
+                            <ul
+                            className="bg-gray-700"
+                                style={{
+                                    pointerEvents: isOpen ? "auto" : "none",
+                                    clipPath: "inset(10% 50% 90% 50% round 10px)"
+                                }}
+                            >
+                                {navlinks}
+                            </ul>{" "}
+                        </nav>
                     </button>
                 </div>
             </header>

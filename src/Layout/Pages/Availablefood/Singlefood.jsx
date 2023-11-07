@@ -4,6 +4,8 @@ import moment from 'moment';
 import useAxiossecure from "../../../Hooks/useAxiossecure";
 import Swal from 'sweetalert2'
 import { Helmet } from "react-helmet-async";
+import { motion } from "framer-motion";
+
 const Singlefood = () => {
     const food = useLoaderData()
     const { user } = useAuth()
@@ -56,11 +58,12 @@ const Singlefood = () => {
 
     }
     return (
-        <div>
-            <Helmet>
+        
+            
+            <section className=" text-gray-100 my-16">
+                <Helmet>
                 <title>Communeat | {food.foodname}</title>
             </Helmet>
-            <section className=" text-gray-100 my-16">
                 <div className="container bg-gray-800  max-w-4xl p-6 mx-auto space-y-6 sm:space-y-12">
                     <div className="flex relative gap-3 mx-auto sm:max-w-full group bg-gray-900">
                         <img src={food.image} alt="" className="object-cover  w-full h-full rounded  lg:col-span-7 bg-gray-500" />
@@ -73,7 +76,7 @@ const Singlefood = () => {
                             <div className="h-4">
 
                             </div>
-
+                            
                             <label htmlFor="my_modal_7" className="px-5 py-1 font-semibold border rounded text-2xl border-gray-100  text-gray-100">Request</label>
                             <div className="flex space-x-2 absolute bottom-2 right-2">
                             
@@ -151,7 +154,9 @@ const Singlefood = () => {
 
                                         <textarea name="note" placeholder="Additional Notes" className="w-full rounded-md focus:ring  border-gray-700 text-gray-900" defaultValue={food.note}></textarea>
                                     </div>
-                                    <input type="submit" value="Request" className="w-full col-span-full  text-white text-xl px-8 py-3 font-semibold border rounded dark:border-gray-100 dark:text-gray-100" />
+                                    
+                                    <motion.input whileHover={{ scale: 1.1 }}
+      transition={{ type: "spring", stiffness: 400, damping: 10 }} type="submit" value="Request" className="w-full col-span-full  text-white text-xl px-8 py-3 font-semibold border rounded dark:border-gray-100 dark:text-gray-100" />
                                 </div>
 
                             </fieldset>
@@ -162,8 +167,9 @@ const Singlefood = () => {
                     <label className="modal-backdrop" htmlFor="my_modal_7">Close</label>
                 </div>
 
-            </section>
-        </div>
+                
+    </section>
+       
     );
 };
 

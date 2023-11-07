@@ -1,4 +1,4 @@
-
+import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import useAuth from "../../../Hooks/useAuth";
 import useAxiossecure from "../../../Hooks/useAxiossecure";
@@ -126,7 +126,8 @@ const Addfood = () => {
 
                             <textarea name="note" placeholder="Additional Notes" className="w-full rounded-md focus:ring  border-gray-700 text-gray-900"></textarea>
                         </div>
-                        <input type="submit" value="Add Food" className="w-full col-span-full  text-white text-xl px-8 py-3 font-semibold border rounded dark:border-gray-100 dark:text-gray-100" />
+                        <motion.input whileHover={{ scale: 1.1 }}
+                            transition={{ type: "spring", stiffness: 400, damping: 10 }} type="submit" value="Add Food" className="w-full col-span-full  text-white text-xl px-8 py-3 font-semibold border rounded dark:border-gray-100 dark:text-gray-100" />
                     </div>
 
                 </fieldset>
