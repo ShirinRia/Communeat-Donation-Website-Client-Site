@@ -17,11 +17,11 @@ const Singlefood = () => {
         const foodid = form.foodid.value;
         const quantity = food.quantity;
         const address = form.address.value;
-        const Requester_email = form.uemail.value;
+        const Requester_email = user.email;
         const Requester_name = user.displayName;
         const Requester_image = user.photoURL;
-        const donar_email = form.demail.value;
-        const donar_name = form.dname.value;
+        const donar_email = food.donar_email;
+        const donar_name = food.donar_name;
         const donation_money = form.money.value;
 
         const requestdate = currentDate;
