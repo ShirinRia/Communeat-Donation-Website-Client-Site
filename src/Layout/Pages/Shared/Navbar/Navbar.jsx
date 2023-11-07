@@ -1,8 +1,47 @@
 import { Link, NavLink } from "react-router-dom";
 import './Navbar.css'
 import useAuth from "../../../../Hooks/useAuth";
+// import { useState, useEffect } from "react";
+// import { useAnimate, stagger, motion } from "framer-motion";
 
+// const staggerMenuItems = stagger(0.1, { startDelay: 0.15 });
+// function useMenuAnimation(isOpen) {
+//     const [scope, animate] = useAnimate();
+  
+//     useEffect(() => {
+//       animate(".arrow", { rotate: isOpen ? 180 : 0 }, { duration: 0.2 });
+  
+//       animate(
+//         "ul",
+//         {
+//           clipPath: isOpen
+//             ? "inset(0% 0% 0% 0% round 10px)"
+//             : "inset(10% 50% 90% 50% round 10px)"
+//         },
+//         {
+//           type: "spring",
+//           bounce: 0,
+//           duration: 0.5
+//         }
+//       );
+  
+//       animate(
+//         "li",
+//         isOpen
+//           ? { opacity: 1, scale: 1, filter: "blur(0px)" }
+//           : { opacity: 0, scale: 0.3, filter: "blur(20px)" },
+//         {
+//           duration: 0.2,
+//           delay: isOpen ? staggerMenuItems : 0
+//         }
+//       );
+//     }, [animate, isOpen]);
+  
+//     return scope;
+//   }
 const Navbar = () => {
+    // const [isOpen, setIsOpen] = useState(false);
+    // const scope = useMenuAnimation(isOpen);
     const { user, logout } = useAuth()
     const handlelogout = () => {
         logout()
@@ -29,7 +68,7 @@ const Navbar = () => {
 
                             </svg>
                         </div>
-                        <h1 className="text-3xl ml-2 font-medium">Communeat</h1>
+                        <h1 className="text-3xl ml-2 font-medium hidden md:visible">Communeat</h1>
                     </a>
                     <ul className="items-center hidden space-x-3 lg:flex">
 
@@ -41,7 +80,7 @@ const Navbar = () => {
                         <div className=" my-5 md:my-0">
                             {user ?
                                 <div className={`flex items-center gap-3 text-white`}>
-                                    <div className="flex gap-2 items-center border-2 border-base-200 px-3 py-1 rounded-lg mr-28 md:mr-0">
+                                    <div className="flex gap-2 items-center border-2 border-base-200 px-3 py-1 rounded-lg  md:mr-0">
                                         <div className="w-10 rounded-full">
                                             <img src={user.photoURL} className="w-full h-full rounded-full" />
 
@@ -51,17 +90,17 @@ const Navbar = () => {
                                         </div>
                                     </div>
 
-                                    <a onClick={handlelogout} href="/login" className="btn hover:text-white hover:bg-[#e879f9] ">Log Out</a>
+                                    <a onClick={handlelogout} href="/login" className="hidden md:block  btn hover:text-white hover:bg-[#e879f9] py-4">Log Out</a>
                                 </div>
 
-                                : <Link to={'/login'} className="hidden  py-2 font-semibold rounded lg:block dark:bg-violet-400 dark:text-gray-900"> Log in </Link>
+                                : <Link to={'/login'} className="  py-2 font-semibold rounded  dark:bg-violet-400 dark:text-gray-900"> Log in </Link>
 
                             }
 
                         </div>
 
                     </div>
-                    <button title="Open menu" type="button" className="p-4 lg:hidden">
+                    <button   className=" lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 dark:text-gray-100">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
