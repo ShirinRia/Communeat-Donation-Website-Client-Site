@@ -6,7 +6,7 @@ const Managefoodcaed = ({ request }) => {
     const { _id, expiredate, requestdate, requesttime, status, Requester_name
         , Requester_email, Requester_image, note, foodname, foodid } = request
     const axiosSecure = useAxiossecure()
-    const [newstatus, setnewstatus] = useState(status)
+    const [newstatus, setnewstatus] = useState("Pending")
     const handleStatus = () => {
         setnewstatus("Delivered")
         const url = `/requestedfood`;

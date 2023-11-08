@@ -99,13 +99,13 @@ const Addfood = () => {
                         </div>
                         <div className="col-span-full sm:col-span-3">
 
-                            {/* <input name="quantity" type="number" placeholder="Food Quantity" className="w-full rounded-md focus:ring  border-gray-700 text-gray-900" />
-                                 */}
-                            <select className="select select-bordered w-full rounded-md focus:ring  border-gray-700 text-gray-900" name="status" defaultValue="Available" required>
+                            <input name="quantity" type="number" defaultValue={'Available'} placeholder="Food Quantity" className="w-full rounded-md focus:ring  border-gray-700 text-gray-900" />
+                                
+                            {/* <select className="select select-bordered w-full rounded-md focus:ring  border-gray-700 text-gray-900" name="status" defaultValue="Available" required>
                                 <option disabled selected>Food Status</option>
                                 <option value="Available">Available</option>
 
-                            </select>
+                            </select> */}
                         </div>
 
 

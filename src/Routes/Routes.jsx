@@ -14,6 +14,8 @@ import Managefood from "../Layout/Pages/Managemyfood/Managefood";
 import Myfoodrequest from "../Layout/Pages/MyFoodRequest/Myfoodrequest";
 import Manage from "../Layout/Pages/ManageSingleFoodRequest/Manage";
 import Errorpage from "../Layout/Pages/Errorpage/Errorpage";
+import Moneydonation from "../Layout/Pages/MoneyDonation/Moneydonation";
+import Receipt from "../Layout/Pages/MoneyDonation/Receipt";
 
 
 
@@ -48,6 +50,15 @@ const Routes = createBrowserRouter([
             {
                 path: "/managefood",
                 element: <PrivateRoute><Managefood /></PrivateRoute>,
+            },
+            {
+                path: "/donation",
+                element: <PrivateRoute><Moneydonation /></PrivateRoute>,
+            },
+            {
+                path: "/receipt",
+                element: <PrivateRoute><Receipt /></PrivateRoute>,
+                loader:()=>fetch(`http://localhost:5000/receipt`)
             },
             {
                 path: "/foodrequest",

@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import './Navbar.css'
 import useAuth from "../../../../Hooks/useAuth";
 import { useAnimate, stagger, motion } from "framer-motion";
@@ -39,10 +39,20 @@ function useMenuAnimation(isOpen) {
     return scope;
 }
 const Navbar = () => {
-
+    const navigate=useNavigate()
+const gotoreceipt=()=>{
+    navigate('/receipt')
+}
     const { user, logout } = useAuth()
+    const [currentuser,setcurrentuser] =useState([])
+    useEffect(() => {
+        setcurrentuser(user)
+    },[user])
+    console.log(currentuser)
+
     const [isOpen, setIsOpen] = useState(false);
     const scope = useMenuAnimation(isOpen);
+
     const handlelogout = () => {
         logout()
             .then(() => { })
@@ -57,6 +67,7 @@ const Navbar = () => {
                 <li className="font-medium"><NavLink to={'/addfood'}>Add Food</NavLink></li>
                 <li className="font-medium"><NavLink to={'/managefood'}>Manage My Foods</NavLink></li>
                 <li className="font-medium"><NavLink to={'/foodrequest'}>My Food Request</NavLink></li>
+                
 
             </>}
     </>
@@ -85,14 +96,17 @@ const Navbar = () => {
                         <div className=" my-5 md:my-0">
                             {user ?
                                 <div className={`flex items-center gap-3 text-white`}>
-                                    <div className="flex gap-2 items-center border-2 border-base-200 px-3 py-1 rounded-lg  md:mr-0">
+                                    <div onClick={gotoreceipt} className="hidden md:block">
+
+                                    <div className="flex gap-2 items-center border-2 border-base-200 px-3 py-1 rounded-lg   md:mr-0">
                                         <div className="w-10 rounded-full">
-                                            <img src={user.photoURL} className="w-full h-full rounded-full" />
+                                            <img src={user?.photoURL} className="w-full h-full rounded-full" />
 
                                         </div>
                                         <div>
-                                            <p>{user.displayName}</p>
+                                            <p>{user?.displayName}</p>
                                         </div>
+                                    </div>
                                     </div>
 
                                     <a onClick={handlelogout} href="/login" className="hidden md:block  btn hover:text-white hover:bg-[#e879f9] py-4">Log Out</a>
@@ -105,9 +119,9 @@ const Navbar = () => {
                         </div>
 
                     </div>
-                    <button className="md:hidden ">
+                   
 
-                        <nav className="menu" ref={scope}>
+                        <nav className=" md:hidden menu" ref={scope}>
                             <motion.button
                                 whileTap={{ scale: 0.97 }}
                                 onClick={() => setIsOpen(!isOpen)}
@@ -120,16 +134,26 @@ const Navbar = () => {
                                 </div>
                             </motion.button>
                             <ul
-                            className="bg-gray-700"
+                            className="bg-gray-700 w-max"
                                 style={{
                                     pointerEvents: isOpen ? "auto" : "none",
-                                    clipPath: "inset(10% 50% 90% 50% round 10px)"
+                                    clipPath: "inset(10% 50% 70% 50% round 10px)"
                                 }}
                             >
+                                <li >
+                                <div className="flex gap-2 items-center  md:mr-0">
+                                        <div className="w-5 rounded-full">
+                                            <img src={user?.photoURL} className="w-full h-full rounded-full" />
+
+                                        </div>  <div>
+                                            <p>{user?.displayName}</p>
+                                        </div>
+                                    </div>
+                                </li>
                                 {navlinks}
                             </ul>{" "}
                         </nav>
-                    </button>
+                    
                 </div>
             </header>
         </div>
