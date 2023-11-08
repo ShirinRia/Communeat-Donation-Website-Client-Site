@@ -1,8 +1,20 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Assignment -007 - Communeat
+# LIVE LINK - 
+Used Package- 
+    - "tanstack/react-table",
+    - "framer-motion"
+    - "lottie-react"
+    - "react-awesome-slider"
+    - "react-elastic-carousel"
+    - "react-helmet-async"
+    - "react-slick"
+    - "react-spinners"
+    - "react-table"
+    - "slick-carousel"
+    - Tailwind CSS library for design : Mamba UI
+Features :
+- You can Donate your extra food instead of wasting that
+- You can also Donate money (EXTRA FEATURE)
+- You can find your donation receipts by tapping on your name in the navbar, you can also download individual receipts (EXTRA FEATURE)
+- Have used JWT token for security purpose
+-  RESPONSIVE FOR mobile, tablet & desktop

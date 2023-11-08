@@ -144,7 +144,7 @@ const Table = () => {
         return (
           <div className='py-8 px-4 space-y-8'>
 
-            <label htmlFor="my_modal_7" className="px-5 py-1 font-semibold border rounded text-2xl border-gray-100  text-gray-100"><GrDocumentUpdate className='text-2xl' /></label>
+            <label htmlFor="my_modal_7" className="px-5 py-1 font-semibold  text-2xl border-gray-100  text-gray-100"><GrDocumentUpdate className='text-2xl' /></label>
 
             <div >
               <button onClick={() => itemDelete(id)}><RiDeleteBin6Fill className='text-2xl' /></button>
