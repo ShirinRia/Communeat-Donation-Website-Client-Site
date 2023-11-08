@@ -59,7 +59,7 @@ const Routes = createBrowserRouter([
             {
                 path: "/receipt",
                 element: <PrivateRoute><Receipt /></PrivateRoute>,
-                loader:()=>fetch(`http://localhost:5000/receipt`)
+                // loader:()=>fetch(`http://localhost:5000/receipt`)
             },
             {
                 path: "/foodrequest",

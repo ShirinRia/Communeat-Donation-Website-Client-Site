@@ -4,14 +4,15 @@ import useAxiossecure from "../../../Hooks/useAxiossecure";
 import Foodrequest from "./foodrequest";
 import Norequest from "./Norequest";
 import { Helmet } from "react-helmet-async";
-import { Reorder } from "framer-motion";
+
 
 const Myfoodrequest = () => {
     const { user } = useAuth();
     const axiosSecure = useAxiossecure()
     const [myrequestedfoods, setmyrequestedfoods] = useState([])
     const [isproductavailable, setisproductavailable] = useState(true)
-    const url = `/requestedfood?email=${user?.email}`;
+    // const url = `/requestedfood?email=${user?.email}`;
+    const url = `/requestedfood`;
     useEffect(() => {
 
         axiosSecure.get(url)

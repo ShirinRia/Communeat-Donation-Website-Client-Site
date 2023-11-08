@@ -18,7 +18,8 @@ const Table = () => {
   const [name, setname] = useState();
   console.log('xyz', xyz)
   const axiosSecure = useAxiossecure()
-  const url = `/userfood?email=${user?.email}`;
+  // const url = `/userfood?email=${user?.email}`;
+  const url = `/userfood`;
   useEffect(() => {
 
     axiosSecure.get(url)

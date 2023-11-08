@@ -14,7 +14,7 @@ const Moneydonation = () => {
    
     const axiosSecure = useAxiossecure()
 
-    const handleaddproduct = e => {
+    const handledonation = e => {
         e.preventDefault();
         const form = e.target;
 
@@ -60,7 +60,7 @@ const Moneydonation = () => {
             <Helmet>
                 <title>Communeat | Donate Some Money</title>
             </Helmet>
-            <form onSubmit={handleaddproduct} className="container  mx-auto space-y-12">
+            <form onSubmit={handledonation} className="container  mx-auto space-y-12">
                 <fieldset className="  p-6 rounded-md shadow-sm bg-gray-900 justify-center">
 
                     <div className="grid grid-cols-1 m-6 space-y-3">
@@ -83,7 +83,7 @@ const Moneydonation = () => {
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9, x: "-5px", y: "5px" }}
                         >
-                            <input type="submit" value="Donate" onClick={printReceipt} className="hide-on-print w-full col-span-full  text-white text-xl px-8 py-3 font-semibold border rounded dark:border-gray-100 dark:text-gray-100" />
+                            <input type="submit" value="Donate" className="hide-on-print w-full col-span-full  text-white text-xl px-8 py-3 font-semibold border rounded dark:border-gray-100 dark:text-gray-100" />
                         </motion.button>
                        
                     </div>
