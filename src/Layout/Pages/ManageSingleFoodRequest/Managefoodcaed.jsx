@@ -1,7 +1,7 @@
 import { useState } from "react";
 import useAxiossecure from "../../../Hooks/useAxiossecure";
 import Swal from 'sweetalert2'
-
+import PropTypes from 'prop-types'; // ES6
 const Managefoodcaed = ({ request }) => {
     const { _id, expiredate, requestdate, requesttime, status, Requester_name
         , Requester_email, Requester_image, note, foodname, foodid } = request
@@ -14,7 +14,7 @@ const Managefoodcaed = ({ request }) => {
             _id,
             newstatus: "Delivered"
         }
-        axiosSecure.patch(url, olduser)
+        axiosSecure.put(url, olduser)
             .then(response => {
                 console.log(response);
                 if (response.data.modifiedCount > 0) {
@@ -55,7 +55,7 @@ const Managefoodcaed = ({ request }) => {
     }
     return (
         <div className="py-16">
-            <div className="bg-gray-800 text-gray-100">
+            <div className=" text-gray-100">
                 <div className="container max-w-4xl px-10 py-6 mx-auto rounded-lg shadow-sm bg-gray-900">
                     <div className="flex items-center justify-between">
                         <div className="flex text-sm divide-x">
@@ -91,5 +91,7 @@ const Managefoodcaed = ({ request }) => {
         </div>
     );
 };
-
+Managefoodcaed.propTypes = {
+    request:PropTypes.object,
+};
 export default Managefoodcaed;

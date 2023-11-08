@@ -1,7 +1,8 @@
 import { BiRightArrowCircle } from 'react-icons/bi';
+import { GrMapLocation } from 'react-icons/gr';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types'; // ES6
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 const Foodcard = ({ foodcard }) => {
     const { _id, address, image, foodname, quantity, expiredate, note, donar_name, donar_image } = foodcard
     return (
@@ -11,7 +12,13 @@ const Foodcard = ({ foodcard }) => {
                 <img alt="" src={donar_image} className="object-cover w-12 h-12 rounded-full shadow bg-gray-500" />
                 <div className="flex flex-col space-y-1">
                     <p className="text-sm font-semibold">{donar_name}</p>
-                    <span className="text-xs text-gray-400">{address}</span>
+                    <p className="text-xs text-gray-400 flex gap-2 items-center">
+                        <GrMapLocation className='bg-white text-2xl'>
+
+                    </GrMapLocation>
+                    <span className='text-base'> {address}</span>
+                   
+                    </p>
                 </div>
             </div>
             <div>

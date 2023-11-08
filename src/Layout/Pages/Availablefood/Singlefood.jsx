@@ -92,12 +92,12 @@ const Singlefood = () => {
 
                 {/* Put this part before </body> tag */}
                 <input type="checkbox" id="my_modal_7" className="modal-toggle" />
-                <div className="modal">
-                    <div className="max-w-4xl mx-auto modal-box bg-transparent ">
+                <div className="modal min-h-screen ">
+                    <div className="max-w-4xl min-h-screen mx-auto modal-box flex items-center bg-transparent ">
 
                         <form onSubmit={handlerequest} className="container  mx-auto space-y-5 relative">
 
-                            <fieldset className="  p-6 rounded-md shadow-sm bg-gray-900 justify-center">
+                            <fieldset className="  p-6 rounded-md shadow-sm bg-gray-500 justify-center">
 
                                 <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3 mx-6  space-y-3">
                                     <div className="sm:col-span-4">

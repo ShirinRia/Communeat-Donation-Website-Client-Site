@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import './footer.css'
+
 const Footer = () => {
     return (
         <div>

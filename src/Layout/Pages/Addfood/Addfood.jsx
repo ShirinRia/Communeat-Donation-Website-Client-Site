@@ -27,28 +27,6 @@ const Addfood = () => {
         console.log(newfood);
 
 
-        // fetch('http://localhost:5000/newfood',
-        //     {
-        //         method: 'POST',
-        //         headers: {
-        //             'content-type': 'application/json',
-        //         },
-        //         body: JSON.stringify(newfood)
-        //     })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         console.log(data)
-        //         // if (data.insertedId) {
-        //         //     Swal.fire({
-        //         //         title: 'Success!',
-        //         //         text: 'Product Added Successfully',
-        //         //         icon: 'success',
-        //         //         confirmButtonText: 'OK'
-        //         //     })
-        //         //     form.reset()
-        //         // }
-        //     })
-
         const url = `/newfood`;
         axiosSecure.post(url, newfood)
             .then(function (response) {
@@ -91,7 +69,7 @@ const Addfood = () => {
 
                         <div className="col-span-full sm:col-span-3">
 
-                            <input name="quantity" type="number" placeholder="Food Quantity" className="w-full rounded-md focus:ring   border-gray-700 text-gray-900" />
+                            <input name="quantity" type="number" placeholder="Food Quantity : How much people can eat" className="w-full rounded-md focus:ring   border-gray-700 text-gray-900" />
                         </div>
                         <div className="col-span-full sm:col-span-3">
 
@@ -99,13 +77,8 @@ const Addfood = () => {
                         </div>
                         <div className="col-span-full sm:col-span-3">
 
-                            <input name="quantity" type="number" defaultValue={'Available'} placeholder="Food Quantity" className="w-full rounded-md focus:ring  border-gray-700 text-gray-900" />
-                                
-                            {/* <select className="select select-bordered w-full rounded-md focus:ring  border-gray-700 text-gray-900" name="status" defaultValue="Available" required>
-                                <option disabled selected>Food Status</option>
-                                <option value="Available">Available</option>
+                            <input name="status" type="text" defaultValue={"Available"} className="w-full rounded-md focus:ring  border-gray-700 text-gray-900" />
 
-                            </select> */}
                         </div>
 
 
@@ -126,8 +99,11 @@ const Addfood = () => {
 
                             <textarea name="note" placeholder="Additional Notes" className="w-full rounded-md focus:ring  border-gray-700 text-gray-900"></textarea>
                         </div>
-                        <motion.input whileHover={{ scale: 1.1 }}
-                            transition={{ type: "spring", stiffness: 400, damping: 10 }} type="submit" value="Add Food" className="w-full col-span-full  text-white text-xl px-8 py-3 font-semibold border rounded dark:border-gray-100 dark:text-gray-100" />
+                        <div className="col-span-full flex justify-center">
+                            <motion.input whileHover={{ scale: 1.1 }}
+                                transition={{ type: "spring", stiffness: 400, damping: 10 }} type="submit" value="Add Food" className=" text-center col-span-full  text-white text-xl px-8 py-3 font-semibold border rounded dark:border-gray-100 dark:text-gray-100" />
+                        </div>
+
                     </div>
 
                 </fieldset>

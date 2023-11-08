@@ -4,7 +4,7 @@ const useFood = () => {
 
     const [items, setitems] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/foods')
+        fetch('https://surplus-server.vercel.app/foods')
             .then(res => res.json())
             .then(data => setitems(data))
     }, [])

@@ -37,13 +37,13 @@ const Availablefood = () => {
         }
         else if (sortby === "Sort by Quantity") {
             const sortallfoodsbyquantity = [...allfoods].sort((a, b) =>
-                a.quantity < b.quantity ? 1 : -1,
+                parseInt(a.quantity) < parseInt(b.quantity) ? 1 : -1,
             );
             setavailablefoods(sortallfoodsbyquantity)
         }
     }
     return (
-        <div className="max-w-7xl mx-auto my-16">
+        <div className="max-w-7xl mx-auto my-16 min-h-screen">
             <Helmet>
                 <title>Communeat | {title}</title>
             </Helmet>

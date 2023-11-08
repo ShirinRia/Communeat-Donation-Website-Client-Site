@@ -14,8 +14,6 @@ const Table = () => {
   console.log(user)
   const [Myfood, setmyfood] = useState([]);
 
-  const [xyz, setxyz] = useState();
-  const [name, setname] = useState();
   // console.log('xyz', xyz)
   // console.log('xyz', name)
   const axiosSecure = useAxiossecure()
@@ -29,50 +27,7 @@ const Table = () => {
       })
   }, [axiosSecure, url])
   console.log(Myfood)
-  const handleaddproduct = e => {
-    e.preventDefault();
-    const form = e.target;
-    const foodname = form.foodname.value;
-    const quantity = form.quantity.value;
-    const address = form.address.value;
-    const status = form.status.value;
-    const expiredate = form.expiredate.value;
-    const note = form.note.value;
-    const image = form.image.value;
-    const donar_name = user.displayName
-    const donar_email = user.email
-    const donar_image = user.photoURL
-    const newfood = { foodname, quantity, address, status, expiredate, note, image, donar_name, donar_email, donar_image }
-    console.log(newfood);
-
-    const url = `/updatefood?id=${xyz}`;
-    axiosSecure.put(url, newfood)
-      .then(function (response) {
-        console.log(response);
-        if (response.data.modifiedCount > 0) {
-          setmyfood(newfood)
-          Swal.fire({
-            title: 'Success!',
-            text: 'Product Updated Successfully',
-            icon: 'success',
-            confirmButtonText: 'Thank You'
-          })
-
-        }
-        else {
-          Swal.fire({
-            title: 'Error!',
-            text: 'Update FAILED',
-            icon: 'error',
-            confirmButtonText: 'Cool'
-          })
-        }
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-
-  }
+  
   const itemDelete = (id_) => {
     Swal.fire({
       title: 'Are you sure?',
@@ -108,10 +63,10 @@ const Table = () => {
   const data = useMemo(() => Myfood, [Myfood])
   /**@type import('@tanstack/react-table').ColumnDef<any>*/
   const columns = [
-    {
-      header: 'ID',
-      accessorKey: '_id'
-    },
+    // {
+    //   header: 'ID',
+    //   // accessorKey: '_id'
+    // },
     {
       header: 'Foodname',
       accessorKey: 'foodname'
@@ -141,17 +96,16 @@ const Table = () => {
         const x = row.original
         const id = x._id
         const name1=x.foodname
-        setxyz(id)
-        setname(name1)
+        
+       
         return (
           <div className='py-8 px-4 space-y-8'>
 
-            <label htmlFor="my_modal_7" className="px-5 py-1 font-semibold  text-2xl border-gray-100  text-gray-100"><GrDocumentUpdate className='text-2xl' /></label>
-
+            <div> <Link to={`/updatefood/${id}`}><GrDocumentUpdate className='text-2xl' /></Link></div>
             <div >
               <button onClick={() => itemDelete(id)}><RiDeleteBin6Fill className='text-2xl' /></button>
             </div>
-            <div> <Link to={`/manage/${xyz}/${name}`}><SiNginxproxymanager className='text-2xl' /></Link></div>
+            <div> <Link to={`/manage/${id}/${name1}`}><SiNginxproxymanager className='text-2xl' /></Link></div>
           </div>
         )
       }
@@ -200,66 +154,8 @@ const Table = () => {
         </tbody>
       </table>
 
-      <input type="checkbox" id="my_modal_7" className="modal-toggle" />
-      <div className="modal">
-        <div className="max-w-4xl mx-auto modal-box bg-transparent ">
-
-          <form onSubmit={handleaddproduct} className="container  mx-auto space-y-12">
-            <fieldset className="  p-6 rounded-md shadow-sm bg-gray-900 justify-center">
-
-              <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3 m-6 space-y-3">
-                <div className="col-span-full sm:col-span-3">
-
-                  <input name="foodname" type="text" defaultValue={Myfood.foodname} placeholder="Food name" className="w-full rounded-md focus:ring border-gray-700 text-gray-900" />
-                </div>
-
-                <div className="col-span-full sm:col-span-3">
-
-                  <input name="quantity" type="number" placeholder="Food Quantity" className="w-full rounded-md focus:ring   border-gray-700 text-gray-900" />
-                </div>
-                <div className="col-span-full sm:col-span-3">
-
-                  <input name="address" type="text" placeholder="Pickup Location" className="w-full rounded-md focus:ring  border-gray-700 text-gray-900" />
-                </div>
-                <div className="col-span-full sm:col-span-3">
-
-                  {/* <input name="quantity" type="number" placeholder="Food Quantity" className="w-full rounded-md focus:ring  border-gray-700 text-gray-900" />
-                                 */}
-                  <select className="select select-bordered w-full rounded-md focus:ring  border-gray-700 text-gray-900" name="status" defaultValue="Available" required>
-                    <option disabled selected>Food Status</option>
-                    <option value="Available">Available</option>
-
-                  </select>
-                </div>
-
-
-                <div className="col-span-full sm:col-span-3">
-
-                  <input name="expiredate" placeholder="Date"
-                    type="date"
-                    // onFocus="(this.type='date')"
-                    // onBlur="(this.type='text')"
-                    className="w-full rounded-md focus:ring  border-gray-700 text-gray-900" />
-                </div>
-                <div className="col-span-full sm:col-span-3">
-
-                  <input name="image" type="url" placeholder="Food Image" className="w-full rounded-md focus:ring  border-gray-700 text-gray-900" />
-                </div>
-
-                <div className="col-span-full">
-
-                  <textarea name="note" placeholder="Additional Notes" className="w-full rounded-md focus:ring  border-gray-700 text-gray-900"></textarea>
-                </div>
-                <input type="submit" value="Add Food" className="w-full col-span-full  text-white text-xl px-8 py-3 font-semibold border rounded dark:border-gray-100 dark:text-gray-100" />
-              </div>
-
-            </fieldset>
-
-          </form>
-        </div>
-
-        <label className="modal-backdrop" htmlFor="my_modal_7">Close</label>
-      </div>
+     
+     
     </div>
   );
 };

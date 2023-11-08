@@ -1,6 +1,6 @@
 import useAxiossecure from "../../../Hooks/useAxiossecure";
 import Swal from 'sweetalert2'
-
+import PropTypes from 'prop-types'; // ES6
 
 const Foodrequest = ({ myrequestedfood ,myrequestedfoods,setmyrequestedfoods}) => {
     const axiosSecure=useAxiossecure()
@@ -17,7 +17,7 @@ const Foodrequest = ({ myrequestedfood ,myrequestedfoods,setmyrequestedfoods}) =
                         const filtered = myrequestedfoods.filter(cart => cart._id !== id_)
                         setmyrequestedfoods(filtered)
                         Swal.fire({
-                            title: 'Congratulations',
+                            title: 'Okay',
                             text: 'Your Requested Removed',
                             icon: 'success',
                             confirmButtonText: 'See You Again'
@@ -85,5 +85,10 @@ const Foodrequest = ({ myrequestedfood ,myrequestedfoods,setmyrequestedfoods}) =
 
     );
 };
+Foodrequest.propTypes = {
+    myrequestedfood:PropTypes.object,
+    myrequestedfoods:PropTypes.array,
+    setmyrequestedfoods:PropTypes.func
 
+};
 export default Foodrequest;

@@ -41,7 +41,7 @@ const Provider = ({ children }) => {
             setloading(false)
             if (currentuser) {
 
-                axios.post('http://localhost:5000/jwt', loggedinuser, { withCredentials: true },
+                axios.post('https://surplus-server.vercel.app/jwt', loggedinuser, { withCredentials: true },
                 )
                     .then(res => {
                         console.log(res.data);
@@ -49,7 +49,7 @@ const Provider = ({ children }) => {
 
             }
             else {
-                axios.post('http://localhost:5000/logout', loggedinuser, { withCredentials: true },
+                axios.post('https://surplus-server.vercel.app/logout', loggedinuser, { withCredentials: true },
                    
                 )
                     .then(res => {

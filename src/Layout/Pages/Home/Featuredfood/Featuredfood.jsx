@@ -6,9 +6,9 @@ import Foodcard from "../../Availablefood/Foodcard";
 
 const Featuredfood = () => {
     const allfoods = useFood()
-    const length=10
+    const length=6
     const sortallfoods = [...allfoods].sort((a, b) =>
-        a.expiredate < b.expiredate ? 1 : -1,
+    parseInt(a.quantity) < parseInt(b.quantity) ? 1 : -1,
     );
 
     return (

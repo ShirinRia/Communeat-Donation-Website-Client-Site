@@ -5,15 +5,13 @@ const Managefood = () => {
  
 
     return (
-        <div className="max-w-7xl mx-auto my-16">
+        <div className="max-w-7xl mx-auto my-16 min-h-screen">
             <Helmet>
                 <title>
                     Communeat | Manageyourfood 
                 </title>
             </Helmet>
-            {/* {Myfood.map(myfood => <Myfoodtable key={myfood._id} myfood={myfood}></Myfoodtable>)} */}
-           
-           
+            
             <Table></Table>
         </div>
     );

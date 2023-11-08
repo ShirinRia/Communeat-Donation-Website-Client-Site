@@ -16,6 +16,7 @@ import Manage from "../Layout/Pages/ManageSingleFoodRequest/Manage";
 import Errorpage from "../Layout/Pages/Errorpage/Errorpage";
 import Moneydonation from "../Layout/Pages/MoneyDonation/Moneydonation";
 import Receipt from "../Layout/Pages/MoneyDonation/Receipt";
+import Infoupdate from "../Layout/Pages/Managemyfood/Infoupdate";
 
 
 
@@ -69,13 +70,18 @@ const Routes = createBrowserRouter([
             {
                 path: "/singlefood/:id",
                 element: <PrivateRoute><Singlefood></Singlefood></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/singlefood/${params.id}`)
+                loader: ({ params }) => fetch(`https://surplus-server.vercel.app/singlefood/${params.id}`)
             },
             
             {
                 path: "/manage/:id/:name",
                 element: <PrivateRoute><Manage></Manage></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/manage/${params.id}`)
+                loader: ({ params }) => fetch(`https://surplus-server.vercel.app/manage/${params.id}`)
+            },
+            {
+                path: "/updatefood/:id",
+                element: <Infoupdate></Infoupdate>,
+                loader: ({params}) => fetch(`https://surplus-server.vercel.app/getmyonefood/${params.id}`)
             },
         ],
     },
