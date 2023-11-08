@@ -10,8 +10,8 @@ const Singlefood = () => {
     const food = useLoaderData()
     const { user } = useAuth()
     const axiosSecure = useAxiossecure()
-    var date = moment();
-    var currentDate = date.format('D/MM/YYYY');
+    let date = moment();
+    let currentDate = date.format('D/MM/YYYY');
     console.log(typeof (currentDate))
     const handlerequest = e => {
         e.preventDefault();

@@ -1,4 +1,4 @@
-
+import RingLoader from "react-spinners/RingLoader";
 import Foodcard from "./Foodcard";
 import { useEffect, useState } from "react";
 import useFood from "../../../Hooks/useFood";
@@ -9,9 +9,11 @@ const Availablefood = () => {
     const allfoods = useFood()
     console.log('allfoods', allfoods)
     const [availablefoods, setavailablefoods] = useState([])
+    const [loading, setloading] = useState(true)
     const [title, settitle] = useState("Allfoods")
     useEffect(() => {
         setavailablefoods(allfoods)
+        setloading(false)
     }, [allfoods])
     console.log('availablefood', availablefoods)
 
@@ -74,11 +76,18 @@ const Availablefood = () => {
             </div>
 
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-center max-w-6xl mx-auto my-16">
+            <div >
                 {
-                    availablefoods.map(foodcard => <Foodcard key={foodcard._id}
-                        foodcard={foodcard}></Foodcard>)
+                    loading ? <div className=" h-[80vh] flex items-center justify-center"><RingLoader color="#212121" size="100px" /></div>
+                        : <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-center max-w-6xl mx-auto my-16">
+                            {
+                                availablefoods.map(foodcard => <Foodcard key={foodcard._id}
+                                    foodcard={foodcard}></Foodcard>)
+                            }
+                        </div >
+
                 }
+
             </div>
         </div>
     );

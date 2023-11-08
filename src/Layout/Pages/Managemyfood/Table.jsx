@@ -16,7 +16,8 @@ const Table = () => {
 
   const [xyz, setxyz] = useState();
   const [name, setname] = useState();
-  console.log('xyz', xyz)
+  // console.log('xyz', xyz)
+  // console.log('xyz', name)
   const axiosSecure = useAxiossecure()
   // const url = `/userfood?email=${user?.email}`;
   const url = `/userfood`;
@@ -139,9 +140,9 @@ const Table = () => {
       cell: ({ row }) => {
         const x = row.original
         const id = x._id
-        const name=x.foodname
+        const name1=x.foodname
         setxyz(id)
-        setname(name)
+        setname(name1)
         return (
           <div className='py-8 px-4 space-y-8'>
 

@@ -1,13 +1,13 @@
-
-
+import PropTypes from 'prop-types'; // ES6
+import { AiTwotonePrinter } from 'react-icons/ai';
 const Receiptcard = ({ donation }) => {
-    const { donar_image, donated_money, donar_email, donar_name, note } = donation
+    const { donar_image, donated_money, donar_email, donar_name, note,currentDate,currentTime } = donation
     const printReceipt = () => {
         window.print();
     }
     return (
-        <div className="my-16">
-            <div className="flex flex-col max-w-4xl  space-y-4 sm:p-10 dark:bg-gray-900 dark:text-gray-100 mx-auto border-b-2 border-gray-900">
+        <div className="my-16 max-w-4xl mx-auto">
+            <div className="flex flex-col   space-y-4 sm:p-10 dark:bg-gray-900 dark:text-gray-100  border-b-2 border-gray-900">
 
                 <ul className="flex flex-col divide-y divide-gray-700">
                     <li className="flex flex-col sm:flex-row sm:justify-between">
@@ -20,16 +20,11 @@ const Receiptcard = ({ donation }) => {
                                         <p className="text-base font-semibold">Donar Name : <span>{donar_name}</span></p>
                                         <p className="text-base font-semibold">Donar Email : <span>{donar_email}</span></p>
                                         <p className="text-base font-semibold">Note : <span>{note}</span></p>
+                                        <p className="text-base font-semibold">Donation DateTime : <span>{currentDate + '' + currentTime}</span></p>
 
                                     </div>
                                 </div>
-                                <div className="flex text-sm divide-x">
-                                    <button onClick={printReceipt} className="flex items-center px-2 py-1 pl-0 space-x-1">
 
-                                        <span>Print</span>
-                                    </button>
-
-                                </div>
 
                             </div>
                         </div>
@@ -40,8 +35,17 @@ const Receiptcard = ({ donation }) => {
 
 
             </div>
+            <div className="flex justify-end text-sm divide-x">
+                <button onClick={printReceipt} className="flex items-center px-2 py-1 ">
+
+                    <span><AiTwotonePrinter className='text-9xl'></AiTwotonePrinter></span>
+                </button>
+
+            </div>
         </div>
     );
 };
-
+Receiptcard.propTypes = {
+    donation:PropTypes.object,
+};
 export default Receiptcard;

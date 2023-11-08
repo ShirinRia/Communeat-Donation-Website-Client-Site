@@ -12,6 +12,8 @@ const Managefood = () => {
                 </title>
             </Helmet>
             {/* {Myfood.map(myfood => <Myfoodtable key={myfood._id} myfood={myfood}></Myfoodtable>)} */}
+           
+           
             <Table></Table>
         </div>
     );

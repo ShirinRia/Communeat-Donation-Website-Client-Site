@@ -4,14 +4,12 @@ import useAuth from "../../../Hooks/useAuth";
 import useAxiossecure from "../../../Hooks/useAxiossecure";
 import './print.css'
 import Swal from 'sweetalert2'
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
+import moment from 'moment';
 const Moneydonation = () => {
 
     const { user } = useAuth()
-    const navigate = useNavigate()
-   
+  
     const axiosSecure = useAxiossecure()
 
     const handledonation = e => {
@@ -24,7 +22,10 @@ const Moneydonation = () => {
         const donar_name = user.displayName
         const donar_email = user.email
         const donar_image = user.photoURL
-        const donatedmoney = { donated_money, note, donar_name, donar_email, donar_image }
+        let date = moment();
+        let currentDate = date.format('D/MM/YYYY');
+        let currentTime = date.format("h:mm:ss a");
+        const donatedmoney = { donated_money, note, donar_name, donar_email, donar_image,currentDate,currentTime }
         console.log(donatedmoney);
 
         const url = `/moneydonation`;
@@ -52,9 +53,7 @@ const Moneydonation = () => {
             });
 
     }
-    const printReceipt = () => {
-       navigate('/receipt')
-    }
+    
     return (
         <section className="p-6  text-gray-50 max-w-4xl mx-auto">
             <Helmet>
@@ -78,14 +77,14 @@ const Moneydonation = () => {
 
                             <textarea name="note" placeholder="Additional Notes" className="on-print w-full rounded-md focus:ring  border-gray-700 text-gray-900"></textarea>
                         </div>
-                        <motion.button 
+                        <motion.button
 
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9, x: "-5px", y: "5px" }}
                         >
                             <input type="submit" value="Donate" className="hide-on-print w-full col-span-full  text-white text-xl px-8 py-3 font-semibold border rounded dark:border-gray-100 dark:text-gray-100" />
                         </motion.button>
-                       
+
                     </div>
 
                 </fieldset>

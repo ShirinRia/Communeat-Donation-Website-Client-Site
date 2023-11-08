@@ -92,7 +92,7 @@ const Navbar = () => {
                     </ul>
                     <div className="hidden md:flex items-center md:space-x-4  w-2/6 relative">
 
-                        {/* <button type="button" className="hidden px-6 py-2 font-semibold rounded lg:block dark:bg-violet-400 dark:text-gray-900">Log in</button> */}
+                      
                         <div className=" my-5 md:my-0 absolute right-0">
                             {user ?
                                 <div className={`flex items-center gap-3 text-white`}>
