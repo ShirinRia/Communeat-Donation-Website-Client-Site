@@ -1,4 +1,4 @@
-
+import { AiTwotonePrinter } from 'react-icons/ai';
 // import { useLoaderData } from 'react-router-dom';
 import './print.css';
 import Receiptcard from './Receiptcard';
@@ -26,8 +26,10 @@ const Receipt = () => {
     }
   }, [axiossecure, donations.length, url])
   // const donations=useLoaderData()
-  console.log(donations)
-
+  // console.log(donations)
+  const printReceipt = () => {
+    window.print();
+}
   return (
     <div>
       <div className="text-center">
@@ -40,6 +42,13 @@ const Receipt = () => {
             {
               donations.map(donation => <Receiptcard key={donation._id} donation={donation}></Receiptcard>)
             }
+             <div className="flex justify-end text-sm divide-x">
+                <button onClick={printReceipt} className="flex items-center px-2 py-1 ">
+
+                    <span><AiTwotonePrinter className='text-9xl'></AiTwotonePrinter></span>
+                </button>
+
+            </div>
           </div >
           : <Nodonation></Nodonation>
       }

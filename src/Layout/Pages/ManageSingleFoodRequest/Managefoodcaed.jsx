@@ -6,15 +6,15 @@ const Managefoodcaed = ({ request }) => {
     const { _id, expiredate, requestdate, requesttime, status, Requester_name
         , Requester_email, Requester_image, note, foodname, foodid } = request
     const axiosSecure = useAxiossecure()
-    const [newstatus, setnewstatus] = useState("Pending")
+    const [newstatus, setnewstatus] = useState(status)
     const handleStatus = () => {
         setnewstatus("Delivered")
         const url = `/requestedfood`;
-        const olduser = {
+        const statusreset = {
             _id,
             newstatus: "Delivered"
         }
-        axiosSecure.put(url, olduser)
+        axiosSecure.patch(url, statusreset)
             .then(response => {
                 console.log(response);
                 if (response.data.modifiedCount > 0) {
@@ -26,7 +26,7 @@ const Managefoodcaed = ({ request }) => {
 
                                 Swal.fire({
                                     title: 'Congratulations',
-                                    text: 'Thanks for your donation',
+                                    text: 'Delivered',
                                     icon: 'success',
                                     confirmButtonText: 'Welcome'
                                 })
@@ -68,7 +68,7 @@ const Managefoodcaed = ({ request }) => {
                                 <p>Requested Time: </p> <span>{requesttime}</span>
                             </div>
                         </div>
-                        <button onClick={handleStatus} className="px-2 py-1 font-bold rounded bg-violet-400 text-gray-900">{newstatus}</button>
+                        <button onClick={handleStatus} className="px-2 py-1 font-bold rounded bg-violet-400 text-gray-900">{newstatus==="Available"?"Pending " : newstatus}</button>
                     </div>
                     <div className="mt-3">
                         <p className="text-2xl font-bold hover:underline">{foodname}</p>

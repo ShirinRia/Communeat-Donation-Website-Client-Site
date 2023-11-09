@@ -1,10 +1,8 @@
 import PropTypes from 'prop-types'; // ES6
-import { AiTwotonePrinter } from 'react-icons/ai';
+
 const Receiptcard = ({ donation }) => {
     const { donar_image, donated_money, donar_email, donar_name, note,currentDate,currentTime } = donation
-    const printReceipt = () => {
-        window.print();
-    }
+    
     return (
         <div className="my-16 max-w-4xl mx-auto">
             <div className="flex flex-col   space-y-4 sm:p-10 dark:bg-gray-900 dark:text-gray-100  border-b-2 border-gray-900">
@@ -35,13 +33,7 @@ const Receiptcard = ({ donation }) => {
 
 
             </div>
-            <div className="flex justify-end text-sm divide-x">
-                <button onClick={printReceipt} className="flex items-center px-2 py-1 ">
-
-                    <span><AiTwotonePrinter className='text-9xl'></AiTwotonePrinter></span>
-                </button>
-
-            </div>
+           
         </div>
     );
 };

@@ -26,7 +26,6 @@ const Addfood = () => {
         const newfood = { foodname, quantity, address, status, expiredate, note, image, donar_name, donar_email, donar_image }
         console.log(newfood);
 
-
         const url = `/newfood`;
         axiosSecure.post(url, newfood)
             .then(function (response) {
@@ -61,23 +60,23 @@ const Addfood = () => {
             <form onSubmit={handleaddproduct} className="container  mx-auto space-y-12">
                 <fieldset className="  p-6 rounded-md shadow-sm bg-gray-900 justify-center">
 
-                    <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3 m-6 space-y-3">
+                    <div className="grid grid-cols-6 gap-6 col-span-full lg:col-span-3 m-6">
                         <div className="col-span-full sm:col-span-3">
 
-                            <input name="foodname" type="text" placeholder="Food name" className="w-full rounded-md focus:ring border-gray-700 text-gray-900" />
+                            <input name="foodname" type="text" placeholder="Food name" className="w-full rounded-md focus:ring border-gray-700 text-gray-900" required />
                         </div>
 
                         <div className="col-span-full sm:col-span-3">
 
-                            <input name="quantity" type="number" placeholder="Food Quantity : How much people can eat" className="w-full rounded-md focus:ring   border-gray-700 text-gray-900" />
+                            <input name="quantity" type="number" placeholder="Food Quantity : How much people can eat" className="w-full rounded-md focus:ring   border-gray-700 text-gray-900" required/>
                         </div>
                         <div className="col-span-full sm:col-span-3">
 
-                            <input name="address" type="text" placeholder="Pickup Location" className="w-full rounded-md focus:ring  border-gray-700 text-gray-900" />
+                            <input name="address" type="text" placeholder="Pickup Location" className="w-full rounded-md focus:ring  border-gray-700 text-gray-900" required />
                         </div>
                         <div className="col-span-full sm:col-span-3">
 
-                            <input name="status" type="text" defaultValue={"Available"} className="w-full rounded-md focus:ring  border-gray-700 text-gray-900" />
+                            <input name="status" type="text" defaultValue={"Available"} className="w-full rounded-md focus:ring  border-gray-700 text-gray-900" required disabled/>
 
                         </div>
 
@@ -86,13 +85,12 @@ const Addfood = () => {
 
                             <input name="expiredate" placeholder="Date"
                                 type="date"
-                                // onFocus="(this.type='date')"
-                                // onBlur="(this.type='text')"
-                                className="w-full rounded-md focus:ring  border-gray-700 text-gray-900" />
+                              
+                                className="w-full rounded-md focus:ring  border-gray-700 text-gray-900" required/>
                         </div>
                         <div className="col-span-full sm:col-span-3">
 
-                            <input name="image" type="url" placeholder="Food Image" className="w-full rounded-md focus:ring  border-gray-700 text-gray-900" />
+                            <input name="image" type="url" placeholder="Food Image" className="w-full rounded-md focus:ring  border-gray-700 text-gray-900" required/>
                         </div>
 
                         <div className="col-span-full">

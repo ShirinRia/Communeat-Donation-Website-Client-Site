@@ -66,20 +66,20 @@ const Infoupdate = () => {
                             <div className="grid justify-center items-center grid-cols-6 gap-6 col-span-full lg:col-span-3 m-6">
                                 <div className="col-span-full sm:col-span-3">
 
-                                    <input name="foodname" type="text" defaultValue={food?.foodname} placeholder="Food name" className="w-full rounded-md focus:ring border-gray-700 text-gray-900" />
+                                    <input name="foodname" type="text" defaultValue={food?.foodname} placeholder="Food name" className="w-full rounded-md focus:ring border-gray-700 text-gray-900" required/>
                                 </div>
 
                                 <div className="col-span-full sm:col-span-3">
 
-                                    <input name="quantity" type="number" defaultValue={food?.quantity} placeholder="Food Quantity" className="w-full rounded-md focus:ring   border-gray-700 text-gray-900" />
+                                    <input name="quantity" type="number" defaultValue={food?.quantity} placeholder="Food Quantity" className="w-full rounded-md focus:ring   border-gray-700 text-gray-900" required/>
                                 </div>
                                 <div className="col-span-full sm:col-span-3">
 
-                                    <input name="address" type="text" defaultValue={food?.address} placeholder="Pickup Location" className="w-full rounded-md focus:ring  border-gray-700 text-gray-900" />
+                                    <input name="address" type="text" defaultValue={food?.address} placeholder="Pickup Location" className="w-full rounded-md focus:ring  border-gray-700 text-gray-900" required/>
                                 </div>
                                 <div className="col-span-full sm:col-span-3">
 
-                                    <input name="status" type="text" defaultValue={"Available"} className="w-full rounded-md focus:ring  border-gray-700 text-gray-900" />
+                                    <input name="status" type="text" defaultValue={"Available"} className="w-full rounded-md focus:ring  border-gray-700 text-gray-900" required disabled/>
                                 </div>
 
 
@@ -87,13 +87,11 @@ const Infoupdate = () => {
 
                                     <input name="expiredate" placeholder="Date" defaultValue={food?.expiredate}
                                         type="date"
-                                        // onFocus="(this.type='date')"
-                                        // onBlur="(this.type='text')"
-                                        className="w-full rounded-md focus:ring  border-gray-700 text-gray-900" />
+                                        className="w-full rounded-md focus:ring  border-gray-700 text-gray-900" required/>
                                 </div>
                                 <div className="col-span-full sm:col-span-3">
 
-                                    <input name="image" type="url" placeholder="Food Image" defaultValue={food?.image} className="w-full rounded-md focus:ring  border-gray-700 text-gray-900" />
+                                    <input name="image" type="url" placeholder="Food Image" defaultValue={food?.image} className="w-full rounded-md focus:ring  border-gray-700 text-gray-900" required/>
                                 </div>
 
                                 <div className="col-span-full">

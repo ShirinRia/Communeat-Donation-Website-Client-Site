@@ -96,7 +96,7 @@ const Navbar = () => {
                         <div className=" my-5 md:my-0 ">
                             {user ?
                                 <div className={`flex items-center gap-3 text-white`}>
-                                    <div onClick={gotoreceipt} className="hidden md:block">
+                                    <div onClick={gotoreceipt} className="hidden lg:block">
 
                                         <div className="flex gap-2 items-center  px-3 py-1 rounded-lg   md:mr-0">
                                             <div className="w-10 rounded-full">
@@ -109,18 +109,18 @@ const Navbar = () => {
                                         </div>
                                     </div>
 
-                                    <button onClick={handlelogout} href="/login" className="hidden md:block  btn hover:text-white hover:bg-[#e879f9] py-4">Log Out</button>
+                                    <button onClick={handlelogout} href="/login" className="hidden lg:block  btn hover:text-white hover:bg-[#e879f9] py-4">Log Out</button>
                                 </div>
 
                                 :
-                                <Link to={'/login'} className="left-0  py-2 font-semibold rounded  dark:bg-violet-400 dark:text-gray-900"> Log in </Link>
+                                <Link to={'/login'} className="left-0 hidden lg:block  py-2 font-semibold rounded  dark:bg-violet-400 dark:text-gray-900"> Log in </Link>
 
                             }
 
                         </div>
 
                     </div>
-                   <div className={`md:hidden ${user ? "mt-64" : "mt-24"}`}>
+                   <div className={`lg:hidden ${user ? "mt-64" : "mt-24"}`}>
                    <nav className="menu" ref={scope}>
                             <motion.button
                                 whileTap={{ scale: 0.97 }}

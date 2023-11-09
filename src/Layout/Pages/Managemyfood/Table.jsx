@@ -14,8 +14,6 @@ const Table = () => {
   console.log(user)
   const [Myfood, setmyfood] = useState([]);
 
-  // console.log('xyz', xyz)
-  // console.log('xyz', name)
   const axiosSecure = useAxiossecure()
   // const url = `/userfood?email=${user?.email}`;
   const url = `/userfood`;
@@ -126,7 +124,7 @@ const Table = () => {
           <tr key={headergroup._id} className='border-b-2 border-gray-950 text-center'>
             {
               headergroup.headers.map(header => (
-                <th className='py-8 px-4 text-center' key={header._id} >
+                <th className='p-4 text-center' key={header._id} >
                   {flexRender(
                     header.column.columnDef.header,
                     header.getContext()
@@ -141,7 +139,7 @@ const Table = () => {
           {table.getRowModel().rows.map(row => (
             <tr key={row._id} className='border-b-2 border-gray-950 text-lg'>
               {row.getVisibleCells().map(cell => (
-                <td className='py-8 px-4 text-center' key={cell._id} >
+                <td className='p-4 text-center' key={cell._id} >
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
 
                 </td>

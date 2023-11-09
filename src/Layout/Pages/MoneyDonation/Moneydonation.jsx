@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import useAuth from "../../../Hooks/useAuth";
 import useAxiossecure from "../../../Hooks/useAxiossecure";
-import './print.css'
+
 import Swal from 'sweetalert2'
 
 import moment from 'moment';
@@ -65,17 +65,17 @@ const Moneydonation = () => {
                     <div className="grid grid-cols-1 m-6 space-y-3">
                         <div className="">
 
-                            <input name="donar_name" type="text" placeholder="Donar name" className="on-print w-full rounded-md focus:ring border-gray-700 text-gray-900" />
+                            <input name="donar_name" type="text" placeholder="Donar name" defaultValue={user?.displayName} className="w-full rounded-md focus:ring border-gray-700 text-gray-900" />
                         </div>
 
                         <div className="">
 
-                            <input name="money" type="number" placeholder="Amount" className="on-print w-full rounded-md focus:ring   border-gray-700 text-gray-900" />
+                            <input name="money" type="number" placeholder="Amount" className="w-full rounded-md focus:ring   border-gray-700 text-gray-900" />
                         </div>
 
                         <div className="">
 
-                            <textarea name="note" placeholder="Additional Notes" className="on-print w-full rounded-md focus:ring  border-gray-700 text-gray-900"></textarea>
+                            <textarea name="note" placeholder="Additional Notes" className="w-full rounded-md focus:ring  border-gray-700 text-gray-900"></textarea>
                         </div>
                         <motion.button
 

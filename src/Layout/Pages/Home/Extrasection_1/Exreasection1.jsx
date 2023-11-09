@@ -1,7 +1,7 @@
 import useAuth from "../../../../Hooks/useAuth";
 import Swal from 'sweetalert2'
 import useAxiossecure from "../../../../Hooks/useAxiossecure";
-
+import { motion } from "framer-motion";
 const Exreasection1 = () => {
     const {user}=useAuth()
     const axiosSecure=useAxiossecure()
@@ -55,18 +55,11 @@ const Exreasection1 = () => {
 
                             <textarea name="comment" placeholder="Write Your Feedback" className="w-full h-48 rounded-md focus:ring  border-gray-700 text-gray-900"></textarea>
                         </div>
-                        {/* <div className="flex col-span-full gap-5">
-                            <div className="w-1/2">
-
-                                <input name="name" type="text" placeholder="Your name"  className="w-full rounded-md focus:ring border-gray-700 text-gray-900" disabled />
-                            </div>
-
-                            <div className="w-1/2">
-
-                                <input name="email" type="text"  placeholder="Your Email" className="w-full rounded-md focus:ring border-gray-700 text-gray-900" disabled/>
-                            </div>
-                        </div> */}
-                        <input type="submit" value="Post Feedback"  className="w-full col-span-full  text-white text-xl px-8 py-3 font-semibold border rounded dark:border-gray-100 dark:text-gray-100" />
+                       
+                        <div className="col-span-full flex justify-center">
+                            <motion.input whileHover={{ scale: 1.1 }}
+                                transition={{ type: "spring", stiffness: 400, damping: 10 }} type="submit" value="Post Feedback"  className="w-1/2   text-white text-xl px-8 py-3 font-semibold border rounded dark:border-gray-100 dark:text-gray-100" />
+                        </div>
                     </div>
 
                 </fieldset>
