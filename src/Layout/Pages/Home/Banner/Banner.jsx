@@ -10,7 +10,7 @@ import Carousel from 'react-elastic-carousel'
 const Banner = () => {
     return (
        
-        <section className='max-w-7xl mx-auto'>
+        <section className='max-w-7xl mx-1 md:mx-4 lg:mx-auto'>
             <Carousel
                 transitionMs={100} enableAutoPlay autoPlaySpeed={1500}
             >

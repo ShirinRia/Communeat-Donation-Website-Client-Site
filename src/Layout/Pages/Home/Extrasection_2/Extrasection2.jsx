@@ -15,7 +15,7 @@ const Extrasection2 = () => {
             })
     }, [axiosSecure])
     return (
-        <div className="max-w-5xl mx-auto bg-gray-400  my-16 py-16 flex justify-center">
+        <div className="max-w-5xl mx-4 lg:mx-auto bg-gray-400  my-16 py-16 flex justify-center">
            <Review reviews={reviews}></Review>
         </div>
 

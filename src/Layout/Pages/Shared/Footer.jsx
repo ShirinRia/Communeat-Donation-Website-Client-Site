@@ -22,7 +22,7 @@ const Footer = () => {
                         </div>
                         <span className="self-center text-2xl font-semibold">Communeat</span>
                     </div>
-                    <div className="grid grid-cols-1 text-sm gap-x-3 gap-y-8 w-5/6 md:grid-cols-4">
+                    <div className="grid grid-cols-1 text-sm gap-x-3 gap-y-8 w-full lg:w-5/6 md:grid-cols-4 lg:grid-cols-4 ">
                         <div className="space-y-3 col-span-2" >
                             <h3 className="uppercase text-gray-50 font-medium">Office Address</h3>
                             <ul className="space-y-1">
@@ -53,7 +53,7 @@ const Footer = () => {
                             </ul>
                         </div>
 
-                        <div className="flex flex-col gap-2">
+                        <div className="flex flex-col gap-2 ">
                             <div className="space-y-3">
                                 <div className="uppercase text-gray-50 font-medium">Social media</div>
                                 <div className="flex justify-start space-x-3">
@@ -73,14 +73,14 @@ const Footer = () => {
                                 </div>
                             </div>
 
-                            <div className="my-8">
+                            <div className="my-8 ">
                                
                                 <motion.button
 
                                     whileHover={{ scale: 1.1 }}
                                     whileTap={{ scale: 0.9, x: "-5px", y: "5px" }}
                                 >
-                                    <Link to={'/donation'} className="px-8 py-3 font-semibold rounded dark:bg-gray-100 dark:text-gray-800 border-2 border-gray-100"> Make Some Donation</Link>
+                                    <Link to={'/donation'} className="w-full px-2 lg:px-8 py-3 lg:font-semibold rounded dark:bg-gray-100 dark:text-gray-800 border-2 border-gray-100"> Make Some Donation</Link>
                                 </motion.button>
                             </div>
 

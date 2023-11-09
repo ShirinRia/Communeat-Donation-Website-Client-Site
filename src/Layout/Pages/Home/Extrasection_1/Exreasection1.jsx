@@ -57,9 +57,9 @@ const Exreasection1 = () => {
     }
 
     return (
-        <div className="my-16">
+        <div className="my-16 max-w-7xl mx-4 lg:mx-auto">
 
-            <form onSubmit={handleaddreview} className="container bg-gray-900  mx-auto  ">
+            <form onSubmit={handleaddreview} className="container bg-gray-900    ">
                 <h2 className="text-gray-100 text-3xl md:text-5xl pt-6 pl-6">Leave a Feedback</h2>
                 <fieldset className="  p-6  rounded-md shadow-sm justify-center">
 

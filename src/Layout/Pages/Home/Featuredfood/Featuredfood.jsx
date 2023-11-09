@@ -12,7 +12,7 @@ const Featuredfood = () => {
     );
 
     return (
-        <div className="max-w-7xl mx-auto my-16">
+        <div className="max-w-7xl mx-4 lg:mx-auto my-16">
             <div className="text-center">
                 <h1 className="font-medium text-5xl">Featured Foods</h1>
             </div>
