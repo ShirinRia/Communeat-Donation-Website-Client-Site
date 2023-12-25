@@ -150,6 +150,8 @@ const Login = () => {
 					{/* <button type="button" className="w-full px-8 py-3 font-semibold rounded-md bg-violet-400 text-gray-900">Sign in</button> */}
 					<input type="submit" className="w-full px-8 py-3 font-semibold rounded-md bg-violet-400 text-gray-900" value="Sign In" />
 				</form>
+				<Divider style={{ padding: "15px 0px",marginBottom:"15px"}}/>
+               <Typography className={classes.typo}>Already have an account?<Link to={'/login'}>Log in</Link></Typography> 
 			</div>
 		</div>
 	);

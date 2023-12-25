@@ -4,6 +4,7 @@ import Banner from "./Banner/Banner";
 import Exreasection1 from "./Extrasection_1/Exreasection1";
 import Extrasection2 from "./Extrasection_2/Extrasection2";
 import Featuredfood from "./Featuredfood/Featuredfood";
+import Contact from "./Contact/Contact";
 
 
 const Home = () => {
@@ -16,6 +17,7 @@ const Home = () => {
             <Featuredfood></Featuredfood>
             <Extrasection2></Extrasection2>
             <Exreasection1></Exreasection1>
+            <Contact/>
         </div>
     );
 };
